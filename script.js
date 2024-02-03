@@ -20,7 +20,7 @@ api("christchurch")
 
 
 const dataProcessor = (returnedJson) => {
-  newObj = {
+  const newObj = {
     "location": {
         "name": returnedJson.location.name,
         "country": returnedJson.location.country,
