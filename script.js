@@ -7,7 +7,7 @@ const props = () => {
   //NEED TO SET LOCATION UPDATE
 
   const realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${_location}`;
-  const hourlyDataURL = `http://api.weatherapi.com/v1/hourly.json?key=${key}&q=${_location}`;
+  const hourlyDataURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${_location}&days=2`;
 
   return {
     get key() {
@@ -43,7 +43,8 @@ const apiMgr = () => {
       const response = await fetch(apiURL, { mode: "cors" });
       const data = await response.json();
 
-      dataProcessor(data);
+      console.log(data)
+      //dataProcessor(data);
       //sends Object to be pruned
 
       return data;
@@ -70,7 +71,7 @@ const apiMgr = () => {
   return { getData };
 };
 
-apiMgr().getData("current")
+apiMgr().getData("hourly")
 
 
 
