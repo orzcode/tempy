@@ -4,6 +4,8 @@ const props = () => {
 
   const _location = "christchurch"; // Make sure to set a default location
 
+  //NEED TO SET LOCATION UPDATE
+
   const realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${_location}`;
   const hourlyDataURL = `http://api.weatherapi.com/v1/hourly.json?key=${key}&q=${_location}`;
 
@@ -26,8 +28,10 @@ const props = () => {
   };
 };
 
-props().location = "testlocation";
+//props().location = "testlocation";
 console.log(props().location);
+
+
 
 const apiMgr = () => {
   const { key, location, realTimeDataURL, hourlyDataURL } = props();
