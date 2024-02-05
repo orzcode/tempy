@@ -1,3 +1,7 @@
+import storage from "./storage.js";
+
+console.log(storage.local)
+
 const props = () => {
   const key64 = "MTU4ZTQ3ZjI2NjI0NGIwMzliMjExNDQxMjQxODAx";
   const key = atob(key64);

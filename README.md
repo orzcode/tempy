@@ -14,3 +14,5 @@ Optional: add a ‘loading’ component that displays from the time the form is 
 
 ~~~
 Make mini-manager that runs both apis (use a promise? or do both at once?), feeds both into dataprocessor, which creates new obj suited to me, from the shit
+
+https://www.weatherapi.com/docs/
