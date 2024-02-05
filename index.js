@@ -1,6 +1,9 @@
 import storage from "./storage.js";
 
-console.log(storage.local)
+
+// https://www.w3schools.com/jsref/prop_win_localstorage.asp
+// storage is busted
+
 
 const props = () => {
   const key64 = "MTU4ZTQ3ZjI2NjI0NGIwMzliMjExNDQxMjQxODAx";
