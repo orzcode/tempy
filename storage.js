@@ -34,6 +34,9 @@ const storage = {
     // storage.props().location("place") to set
     // storage.props().location() to get
 
+    const _realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${location()}`;
+    const _hourlyDataURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location()}&days=2`;
+
     const realTimeDataURL = () => {
       return _realTimeDataURL;
     }
@@ -41,36 +44,9 @@ const storage = {
       return _hourlyDataURL;
     }
 
-  
-    const _realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${location()}`;
-    const _hourlyDataURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location()}&days=2`;
-  
-    return {
-      // get key() {
-      //   return key;
-      // },
-      //can and does get accessed internally within this by the url itself
-      
-      // get location() {
-      //   return _location;
-      // },
-      // set location(newLocation) {
-      //   _location = newLocation;
-      // },
-
-      // get realTimeDataURL() {
-      //   return realTimeDataURL;
-      // },
-      // get hourlyDataURL() {
-      //   return hourlyDataURL;
-      // },
-
-      location, realTimeDataURL, hourlyDataURL
-    };
-
+    return { location, realTimeDataURL, hourlyDataURL };
 
   }
-
 
 };
 

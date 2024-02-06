@@ -1,45 +1,7 @@
 import storage from "./storage.js";
 
-storage.props().location("christchurch")
-
-
-
-const props = () => {
-  const key64 = "MTU4ZTQ3ZjI2NjI0NGIwMzliMjExNDQxMjQxODAx";
-  const key = atob(key64);
-
-  const _location = "christchurch"; // Make sure to set a default location
-
-  //NEED TO SET LOCATION UPDATE
-
-  const realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${_location}`;
-  const hourlyDataURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${_location}&days=2`;
-
-  return {
-    get key() {
-      return key;
-    },
-    get location() {
-      return _location;
-    },
-    set location(newLocation) {
-      _location = newLocation;
-    },
-    get realTimeDataURL() {
-      return realTimeDataURL;
-    },
-    get hourlyDataURL() {
-      return hourlyDataURL;
-    },
-  };
-};
-
-//console.log(props().location);
-
-
-
 const apiMgr = () => {
-  const { key, location, realTimeDataURL, hourlyDataURL } = props();
+  const { realTimeDataURL, hourlyDataURL } = storage.props();
 
   const apiFetcher = async (queryType) => {
     try {
@@ -62,13 +24,10 @@ const apiMgr = () => {
   const getData = (queryType) => {
     switch(queryType) {
       case "current":
-        apiFetcher(realTimeDataURL);
+        apiFetcher(realTimeDataURL());
         break;
       case "hourly":
-        apiFetcher(hourlyDataURL);
-        break;
-      case "future":
-        apiFetcher(futureDataURL);
+        apiFetcher(hourlyDataURL());
         break;
     }
   }
