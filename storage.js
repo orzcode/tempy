@@ -1,38 +1,35 @@
 // storage.js
 const storage = {
-  createArray(arrayName) {
-    arrayName = [];
-    return arrayName;
-  },
+  // createArray(arrayName) {
+  //   arrayName = [];
+  //   return arrayName;
+  // },
 
-  get localStorage() {
-    return (name) => {
-      if (localStorage.getItem(name) !== null) {
-        let data = localStorage.getItem(name);
-        return JSON.parse(data);
-      } else return "empty";
-    };
-  },
-
-  set localStorage(to_be_stringified_data) {
-    // Assuming you have a name property in to_be_stringified_data
-    localStorage.setItem(
-      to_be_stringified_data.N,
-      JSON.stringify(to_be_stringified_data.data)
-    );
-    //i.e. set as { N: "example", data: "some data or function i guess" };
-  },
-
-  get trash() {
-    if (localStorage.getItem("trash") !== null) {
-      let data = localStorage.getItem("trash");
+  getLocal: (storageName) => {
+    if (localStorage.getItem(storageName) !== null) {
+      let data = localStorage.getItem(storageName);
       return JSON.parse(data);
-    } else return null;
+    } else return `${storageName} localstorage is empty`;
   },
 
-  set trash(to_be_stringified_data) {
-    localStorage.setItem("trash", JSON.stringify(to_be_stringified_data));
+  setLocal: (storageName, value) => {
+    localStorage.setItem(storageName, JSON.stringify(value));
   },
+
+  //use just like localStorage syntax, but shorter.
+  //console log "localstorage" to see ALL local stories entries.
+  //remember you can use another array as a value(!)
+
+  // get trash() {
+  //   if (localStorage.getItem("trash") !== null) {
+  //     let data = localStorage.getItem("trash");
+  //     return JSON.parse(data);
+  //   } else return null;
+  // },
+
+  // set trash(to_be_stringified_data) {
+  //   localStorage.setItem("trash", JSON.stringify(to_be_stringified_data));
+  // },
 
   clear: () => {
     return localStorage.clear();

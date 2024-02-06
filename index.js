@@ -1,8 +1,6 @@
 import storage from "./storage.js";
 
 
-// https://www.w3schools.com/jsref/prop_win_localstorage.asp
-// storage is busted
 
 
 const props = () => {
