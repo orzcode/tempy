@@ -1,9 +1,7 @@
 import storage from "./storage.js";
 
+storage.props().location("christchurch")
 
-storage.props().location = "f"
-console.log(storage.props().location)
-//busted
 
 
 const props = () => {

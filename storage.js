@@ -21,23 +21,29 @@ const storage = {
 
 
   props: () => {
-
-    let _location = "christchurch"; // Make sure to set a default location
-
-   fuck: {
     const key64 = "MTU4ZTQ3ZjI2NjI0NGIwMzliMjExNDQxMjQxODAx";
     const key = atob(key64);
   
+    const location = (newLocation) => {
+      if (newLocation) {
+        storage.setLocal("location", newLocation); // Fixed to use the setLocal method from the storage object
+        console.log(`New location is ${newLocation}`)
+      } else return storage.getLocal("location"); // Fixed to use the getLocal method from the storage object
+    };
+    //Usage:
+    // storage.props().location("place") to set
+    // storage.props().location() to get
+
+    const realTimeDataURL = () => {
+      return _realTimeDataURL;
+    }
+    const hourlyDataURL = () => {
+      return _hourlyDataURL;
+    }
 
   
-    // const location = (newLocation) => {
-    //   if(newLocation){
-    //     _location = newLocation
-    //   }else return _location
-    // }
-  
-    const realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${location}`;
-    const hourlyDataURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location}&days=2`;
+    const _realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${location()}`;
+    const _hourlyDataURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location()}&days=2`;
   
     return {
       // get key() {
@@ -45,23 +51,24 @@ const storage = {
       // },
       //can and does get accessed internally within this by the url itself
       
-      get location() {
-        return _location;
-      },
-      set location(newLocation) {
-        _location = newLocation;
-      },
+      // get location() {
+      //   return _location;
+      // },
+      // set location(newLocation) {
+      //   _location = newLocation;
+      // },
 
-      get realTimeDataURL() {
-        return realTimeDataURL;
-      },
-      get hourlyDataURL() {
-        return hourlyDataURL;
-      },
+      // get realTimeDataURL() {
+      //   return realTimeDataURL;
+      // },
+      // get hourlyDataURL() {
+      //   return hourlyDataURL;
+      // },
+
+      location, realTimeDataURL, hourlyDataURL
     };
-    //return { shit }
-  };
-  return fuck
+
+
   }
 
 
