@@ -1,6 +1,9 @@
 import storage from "./storage.js";
 
 
+storage.props().location = "f"
+console.log(storage.props().location)
+//busted
 
 
 const props = () => {
@@ -33,8 +36,7 @@ const props = () => {
   };
 };
 
-//props().location = "testlocation";
-console.log(props().location);
+//console.log(props().location);
 
 
 

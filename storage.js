@@ -1,10 +1,5 @@
 // storage.js
 const storage = {
-  // createArray(arrayName) {
-  //   arrayName = [];
-  //   return arrayName;
-  // },
-
   getLocal: (storageName) => {
     if (localStorage.getItem(storageName) !== null) {
       let data = localStorage.getItem(storageName);
@@ -20,20 +15,56 @@ const storage = {
   //console log "localstorage" to see ALL local stories entries.
   //remember you can use another array as a value(!)
 
-  // get trash() {
-  //   if (localStorage.getItem("trash") !== null) {
-  //     let data = localStorage.getItem("trash");
-  //     return JSON.parse(data);
-  //   } else return null;
-  // },
-
-  // set trash(to_be_stringified_data) {
-  //   localStorage.setItem("trash", JSON.stringify(to_be_stringified_data));
-  // },
-
   clear: () => {
     return localStorage.clear();
   },
+
+
+  props: () => {
+
+    let _location = "christchurch"; // Make sure to set a default location
+
+   fuck: {
+    const key64 = "MTU4ZTQ3ZjI2NjI0NGIwMzliMjExNDQxMjQxODAx";
+    const key = atob(key64);
+  
+
+  
+    // const location = (newLocation) => {
+    //   if(newLocation){
+    //     _location = newLocation
+    //   }else return _location
+    // }
+  
+    const realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${location}`;
+    const hourlyDataURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location}&days=2`;
+  
+    return {
+      // get key() {
+      //   return key;
+      // },
+      //can and does get accessed internally within this by the url itself
+      
+      get location() {
+        return _location;
+      },
+      set location(newLocation) {
+        _location = newLocation;
+      },
+
+      get realTimeDataURL() {
+        return realTimeDataURL;
+      },
+      get hourlyDataURL() {
+        return hourlyDataURL;
+      },
+    };
+    //return { shit }
+  };
+  return fuck
+  }
+
+
 };
 
 export default storage;
