@@ -10,11 +10,7 @@ const apiMgr = () => {
       const response = await fetch(apiURL, { mode: "cors" });
       const data = await response.json();
 
-      //console.log(data)
-      return dataProcessor(data);
-      //sends Object to be pruned
-
-      //return data;
+      return data;
     } catch (error) {
       //console.error("Error: ", error);
       //throw error;
@@ -22,10 +18,14 @@ const apiMgr = () => {
   };
 
   const getData = () => {
-    apiFetcher(forecastURL());
-	//MIGHT HAVE TO USE A PROMISE AFTERALL
-	//OR ASYNC AWAIT
-	//TO RUN THIS THEN RUN DATA PROCESSOR AND RETURN IT
+    return apiFetcher(forecastURL())
+      .then((result) => {
+        const processedData = dataProcessor(result);
+        return processedData;
+      })
+      .catch((error) => {
+        throw error;
+      });
   };
 
   return { getData };
