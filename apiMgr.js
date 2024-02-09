@@ -56,9 +56,7 @@ const dataProcessor = (returnedJson) => {
 
   const today = {
     temp_c: returnedJson.current.temp_c,
-    //is_day: returnedJson.current.is_day,
-    //fuck it, for object uniformity i'll scrub this.
-    //can query the location.locatime if needed to check day or night
+    is_day: returnedJson.current.is_day,
     wind_dir: returnedJson.current.wind_dir,
     rainchance: returnedJson.forecast.forecastday[0].day.daily_chance_of_rain,
     condition: {
@@ -68,9 +66,10 @@ const dataProcessor = (returnedJson) => {
     },
     hourly: {
       12: getHourlyData(0, 12),
-      3: getHourlyData(0, 3),
-      6: getHourlyData(0, 6),
-      9: getHourlyData(0, 9),
+      3: getHourlyData(0, 15),
+      6: getHourlyData(0, 18),
+      9: getHourlyData(0, 21),
+      //must be 24h format
     },
   };
 
@@ -78,6 +77,8 @@ const dataProcessor = (returnedJson) => {
     temp_c: returnedJson.forecast.forecastday[1].day.maxtemp_c,
     wind_dir: returnedJson.forecast.forecastday[1].hour[16].wind_dir,
     //grabs the 4pm wind direction
+    is_day: returnedJson.forecast.forecastday[1].hour[16].is_day,
+    //want 'tomorrow' main to always be day - so grabs 4pm 'isday'
     rainchance: returnedJson.forecast.forecastday[1].day.daily_chance_of_rain,
     condition: {
       text: returnedJson.forecast.forecastday[1].day.condition.text,
@@ -86,9 +87,10 @@ const dataProcessor = (returnedJson) => {
     },
     hourly: {
       12: getHourlyData(1, 12),
-      3: getHourlyData(1, 3),
-      6: getHourlyData(1, 6),
-      9: getHourlyData(1, 9),
+      3: getHourlyData(1, 15),
+      6: getHourlyData(1, 18),
+      9: getHourlyData(1, 21),
+      //must be 24h format
     },
   };
 
