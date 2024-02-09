@@ -17,15 +17,15 @@ const apiMgr = () => {
     }
   };
 
-  const getData = () => {
-    return apiFetcher(forecastURL())
-      .then((result) => {
-        const processedData = dataProcessor(result);
-        return processedData;
-      })
-      .catch((error) => {
-        throw error;
-      });
+  const getData = async () => {
+    try {
+      const result = await apiFetcher(forecastURL());
+      const processedData = dataProcessor(result);
+      console.log("Processed Data:", processedData);
+      return processedData;
+    } catch (error) {
+      throw error;
+    }
   };
 
   return { getData };
