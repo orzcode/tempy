@@ -49,13 +49,23 @@ body {
 .mainContainer {
   width: 500px;
   height: 800px;
-
+  padding: 1rem;
   border-radius: 10px;
   background-color: rgb(176, 146, 109);
 
-  display: grid;
+  /* display: grid; */
+
+  /* should change to grid */
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
+.date {
+  height: min-content;
+}
+/* ----------------- */
 .topTabs {
   display: flex;
   justify-content: space-evenly;
@@ -63,7 +73,7 @@ body {
   height: min-content;
   padding: 1rem;
 }
-
+/* ----------------- */
 .centreDetails {
   display: flex;
   justify-content: space-around;
@@ -76,22 +86,51 @@ body {
   flex-direction: column;
 }
 
-.centreTemp, .centreConditionImg, .precipImg, .windDir {
+.centreTemp,
+.centreConditionImg,
+.precipImg,
+.windDir {
   height: 14rem;
   width: 14rem;
   font-size: clamp(4vw, 10rem, 11rem);
 }
 
-.centreConditionImg img, .precipImg img, .windDir img{
-    height: 100%;
+.centreConditionImg img,
+.precipImg img,
+.windDir img {
+  height: 100%;
 }
 
-.centreHigh, .centreConditionText, .precipPercent, .windCardinal {
-text-align: center;
+.centreHigh,
+.centreConditionText,
+.precipPercent,
+.windCardinal {
+  text-align: center;
 }
-
+/* ----------------- */
 .precipWind {
   display: flex;
   justify-content: space-around;
   align-items: center;
 }
+/* ----------------- */
+
+/* ----------------- */
+.hourlySection {
+  display: flex;
+  gap: 2rem;
+}
+
+.hourCol {
+  display: flex;
+  width: 100%;
+  text-align: center;
+  flex-direction: column;
+}
+.hourBits {
+  height:100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+}
+/* ----------------- */
