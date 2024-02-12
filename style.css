@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
 }
 html {
   background-color: rgb(200, 200, 200);
@@ -97,7 +97,8 @@ body {
 
 .centreConditionImg img,
 .precipImg img,
-.windDir img {
+.windDir img,
+.hBit img {
   height: 100%;
 }
 
@@ -129,8 +130,17 @@ body {
 }
 .hourBits {
   height:100%;
+  gap: 1rem;
   display: grid;
+  align-items: center;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+}
+
+.hBit img {
+  width: 100%;
+  max-width: 5rem;
+  height: auto;
+
 }
 /* ----------------- */
