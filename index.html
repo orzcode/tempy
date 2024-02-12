@@ -1,42 +1,67 @@
 <!DOCTYPE html>
-<html lang='en'>
-<head>
-    <meta charset='UTF-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
-    <link rel='stylesheet' href='style.css'>
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css'>
-    <link rel='stylesheet' href='https://fonts.googleapis.com/css?family=Roboto|Lato'>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto|Lato"
+    />
     <title>Tempy</title>
-    <link rel='icon' type='image/x-icon' href='favicon.ico'>
-</head>
-<body>
-    
+    <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  </head>
+  <body>
     <div class="mainContainer">
-        <div class="topTabs"></div>
-        <div class="date"></div>
+      <div class="topTabs">
+        <h3>Today</h3>
+        <h3>Tomorrow</h3>
+      </div>
+      <div class="date">"2024-02-12 13:45"</div>
 
-        <div class="centreDetails">
-            <div class="centreTempAndHigh">
-                <div class="centreTemp"></div>
-                <div class="centreHigh"></div>
-            </div>
-            <div class="centreConditions">
-                <div class="centreConditionImg"></div>
-                <div class="centreConditionText"></div>
-            </div>
+      <div class="centreDetails">
+        <div class="centreTempAndHigh">
+          <div class="centreTemp">23°</div>
+          <div class="centreHigh">High 27°</div>
+        </div>
+        <div class="centreConditions">
+          <div class="centreConditionImg">
+            <img src="images/conditions/day/122.png" alt="" />
+          </div>
+          <div class="centreConditionText">Showers</div>
+        </div>
+      </div>
+
+      <div class="precipWind">
+
+        <div class="precip">
+
+          <div class="precipImg">
+            <img src="images/plainWaterIcon.png" alt="rain chance" />
+          </div>
+          <div class="precipPercent">100%</div>
+
         </div>
 
-        <div class="precipWind">
-            <div class="precipPercent"></div>
-            <div class="windDir"></div>
+        <div class="wind">
+
+          <div class="windDir">
+            <img src="images/plainWindIcon.png" alt="wind direction" />
+          </div>
+          <div class="windCardinal">N E</div>
         </div>
+        
+      </div>
 
-        <!-- hourly details go here?-->
-
+      <!-- hourly details go here?-->
     </div>
-       
-        <!-- <div class='footer'>Created by Orz <a href='https://github.com/orzcode' target='_blank'><i class='fa-brands fa-github'></i></a> -->
-<script type="module" src='index.js' defer></script>
-</body>
+
+    <!-- <div class='footer'>Created by Orz <a href='https://github.com/orzcode' target='_blank'><i class='fa-brands fa-github'></i></a> -->
+    <script type="module" src="index.js" defer></script>
+  </body>
 </html>

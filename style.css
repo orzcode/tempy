@@ -2,7 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    /* outline: 1px solid black; */
+    outline: 1px solid black;
 }
 html {
     background-color: rgb(200, 200, 200);
@@ -47,9 +47,34 @@ body {
     width: 500px;
     height: 800px;
 
-    border-radius: 25px;
+    border-radius: 10px;
     background-color: rgb(176, 146, 109);
 
     display: grid;
 
+}
+
+.topTabs {
+    display: flex;
+    justify-content: space-evenly;
+    border-bottom: 2px solid black;
+    height: min-content;
+    padding: 1rem;
+}
+
+.centreDetails{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.centreTempAndHigh, .centreConditions {
+    display:flex;
+    flex-direction: column;
+}
+
+.precipWind {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
 }
