@@ -21,7 +21,9 @@ const apiMgr = () => {
     try {
       const result = await apiFetcher(forecastURL());
       const processedData = dataProcessor(result);
-      console.log("Processed Data:", processedData);
+
+      //console.log("Processed Data:", processedData);
+
       return processedData;
     } catch (error) {
       throw error;
