@@ -62,8 +62,10 @@ body {
   justify-content: space-between;
 }
 
-.date {
+.dateLocation {
   height: min-content;
+  display: flex;
+  justify-content: space-around;
 }
 /* ----------------- */
 .topTabs {
@@ -88,28 +90,28 @@ body {
 
 .centreTemp,
 .centreConditionImg,
-.precipImg,
-.windDir {
+.centrePrecipImg,
+.centreWindDir {
   height: 14rem;
   width: 14rem;
   font-size: clamp(4vw, 10rem, 11rem);
 }
 
 .centreConditionImg img,
-.precipImg img,
-.windDir img,
+.centrePrecipImg img,
+.centreWindDir img,
 .hBit img {
   height: 100%;
 }
 
 .centreHigh,
 .centreConditionText,
-.precipPercent,
-.windCardinal {
+.centrePrecipPercent,
+.centreWindCardinal {
   text-align: center;
 }
 /* ----------------- */
-.precipWind {
+.centrePrecipWind {
   display: flex;
   justify-content: space-around;
   align-items: center;
