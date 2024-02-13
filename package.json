@@ -18,5 +18,8 @@
   "devDependencies": {
     "gh-pages": "^6.1.1",
     "vite": "^5.0.8"
+  },
+  "dependencies": {
+    "date-fns": "^3.3.1"
   }
 }

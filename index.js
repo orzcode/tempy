@@ -8,8 +8,8 @@ import injector from "./injector.js";
 ////////////////////////////////////////////
 
 
-// let obj = apiMgr().getData();
-// console.log(obj)
+ let obj = apiMgr().getData();
+ console.log(obj)
 
 //injector().exec()
 

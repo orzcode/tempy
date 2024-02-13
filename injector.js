@@ -19,6 +19,7 @@ const injector = () => {
     const tags = {
       date: document.querySelector("#date"),
       location: document.querySelector("#location"),
+      
       centreTemp: document.querySelector("#centreTemp"),
       centreHigh: document.querySelector("#centreHigh"),
       centreConditionImg: document.querySelector("#centreConditionImg"),
