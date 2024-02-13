@@ -13,6 +13,5 @@ Add any styling you like!
 Optional: add a ‘loading’ component that displays from the time the form is submitted until the information comes back from the API. Use DevTools to test for low-end devices.
 
 ~~~
-Make mini-manager that runs both apis (use a promise? or do both at once?), feeds both into dataprocessor, which creates new obj suited to me, from the shit
 
 https://www.weatherapi.com/docs/
