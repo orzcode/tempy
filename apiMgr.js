@@ -23,12 +23,18 @@ const apiMgr = () => {
       const processedData = dataProcessor(result);
 
       //console.log("Processed Data:", processedData);
+      
+      locallyStore(processedData);
 
       return processedData;
     } catch (error) {
       throw error;
     }
   };
+
+  const locallyStore = (obj) => {
+    storage.setLocal("localWeatherCopy", obj)
+  }
 
   return { getData };
 };
@@ -77,10 +83,10 @@ const dataProcessor = (returnedJson) => {
 
   const tomorrow = {
     temp_c: returnedJson.forecast.forecastday[1].day.maxtemp_c,
+    is_day: returnedJson.forecast.forecastday[1].hour[16].is_day,
+    //want 'tomorrow' main to always be day - so grabs 4pm 'isday',
     wind_dir: returnedJson.forecast.forecastday[1].hour[16].wind_dir,
     //grabs the 4pm wind direction
-    is_day: returnedJson.forecast.forecastday[1].hour[16].is_day,
-    //want 'tomorrow' main to always be day - so grabs 4pm 'isday'
     rainchance: returnedJson.forecast.forecastday[1].day.daily_chance_of_rain,
     condition: {
       text: returnedJson.forecast.forecastday[1].day.condition.text,

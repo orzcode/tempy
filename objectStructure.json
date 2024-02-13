@@ -63,8 +63,8 @@
     },
     "tomorrow": {
         "temp_c": 25.7,
-        "wind_dir": "NW",
         "is_day": 1,
+        "wind_dir": "NW",
         "rainchance": 0,
         "condition": {
             "text": "Sunny",

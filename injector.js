@@ -1,20 +1,19 @@
 // injector.js
 import apiMgr from "./apiMgr.js";
+import storage from "./storage.js";
 
 const injector = () => {
-  const exec = () => {
-    apiMgr()
-      .getData()
-      .then((obj) => {
-        inject(obj);
-      })
-      .catch((err) => {
-        console.error("Oops, something went wrong:", err);
-      });
-  };
+  const localData = storage.getLocal("localWeatherCopy");
 
-  const inject = (obj) => {
-    console.log(obj);
+  //remove this/rewrite. gotta use data from localstorage, and gotta include a today/tomrow param?
+  // const day = (day) => {
+    
+  //       inject(day);
+    
+  // };
+
+  const inject = (day) => {
+    console.log(localData);
     console.log("Obj retrieved, 'inject' has injected");
 
     const tags = {
