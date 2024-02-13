@@ -1,0 +1,121 @@
+{
+    "location": {
+        "name": "Christchurch",
+        "country": "New Zealand",
+        "localtime": "2024-02-13 18:19"
+    },
+    "today": {
+        "temp_c": 20,
+        "is_day": 1,
+        "wind_dir": "ENE",
+        "rainchance": 0,
+        "condition": {
+            "text": "Sunny",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+            "code": 1000
+        },
+        "hourly": {
+            "3": {
+                "temp_c": 19.2,
+                "is_day": 1,
+                "wind_dir": "E",
+                "rainchance": 0,
+                "condition": {
+                    "text": "Sunny",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+                    "code": 1000
+                }
+            },
+            "6": {
+                "temp_c": 20,
+                "is_day": 1,
+                "wind_dir": "ENE",
+                "rainchance": 0,
+                "condition": {
+                    "text": "Sunny",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+                    "code": 1000
+                }
+            },
+            "9": {
+                "temp_c": 14.7,
+                "is_day": 0,
+                "wind_dir": "ENE",
+                "rainchance": 0,
+                "condition": {
+                    "text": "Clear ",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+                    "code": 1000
+                }
+            },
+            "12": {
+                "temp_c": 18.9,
+                "is_day": 1,
+                "wind_dir": "ENE",
+                "rainchance": 0,
+                "condition": {
+                    "text": "Sunny",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+                    "code": 1000
+                }
+            }
+        }
+    },
+    "tomorrow": {
+        "temp_c": 25.7,
+        "wind_dir": "NW",
+        "is_day": 1,
+        "rainchance": 0,
+        "condition": {
+            "text": "Sunny",
+            "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+            "code": 1000
+        },
+        "hourly": {
+            "3": {
+                "temp_c": 24.9,
+                "is_day": 1,
+                "wind_dir": "NNE",
+                "rainchance": 0,
+                "condition": {
+                    "text": "Sunny",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+                    "code": 1000
+                }
+            },
+            "6": {
+                "temp_c": 24.5,
+                "is_day": 1,
+                "wind_dir": "NW",
+                "rainchance": 0,
+                "condition": {
+                    "text": "Sunny",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+                    "code": 1000
+                }
+            },
+            "9": {
+                "temp_c": 17.7,
+                "is_day": 0,
+                "wind_dir": "NNW",
+                "rainchance": 0,
+                "condition": {
+                    "text": "Clear ",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/night/113.png",
+                    "code": 1000
+                }
+            },
+            "12": {
+                "temp_c": 22,
+                "is_day": 1,
+                "wind_dir": "E",
+                "rainchance": 0,
+                "condition": {
+                    "text": "Sunny",
+                    "icon": "//cdn.weatherapi.com/weather/64x64/day/113.png",
+                    "code": 1000
+                }
+            }
+        }
+    }
+}
