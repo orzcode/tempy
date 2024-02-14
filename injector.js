@@ -12,9 +12,9 @@ const injector = () => {
     
   // };
 
-  const exec = (day) => {
+  const matchTags = (day) => {
     console.log(localData);
-    console.log("Obj retrieved, 'inject' has injected");
+    console.log("Obj retrieved, 'inject' preparing...");
 
     const tags = {
       date: document.querySelector("#date"),
@@ -27,20 +27,29 @@ const injector = () => {
       centrePrecipPercent: document.querySelector("#centrePrecipPercent"),
       centreWindCardinal: document.querySelector("#centreWindCardinal"),
 
-      3: document.querySelectorAll('[data-hour="3pm"]'),
-      12: document.querySelectorAll('[data-hour="12pm"]'),
-      6: document.querySelectorAll('[data-hour="6pm"]'),
-      9: document.querySelectorAll('[data-hour="9pm"]'),
+      3: document.querySelector('[data-hour="3pm"]'),
+      12: document.querySelector('[data-hour="12pm"]'),
+      6: document.querySelector('[data-hour="6pm"]'),
+      9: document.querySelector('[data-hour="9pm"]'),
       //is this right?!
+
+      //add:
+      // 3 bits of hourly text
+      // 1 bit of hourly img
+      // ONCE(?)
+
+      
     };
 
     tags.location.textContent = obj.location.name;
     tags.date.textContent = obj.location.localtime;
     tags.centreTemp.textContent = obj.location.name;
 	//careful! this needs to be dynamic for tomorrow too
+
+  return tags
   };
 
-  return { exec };
+  return { matchTags };
 };
 
 export default injector;
