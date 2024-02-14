@@ -27,6 +27,8 @@ const injector = () => {
       centrePrecipPercent: document.querySelector("#centrePrecipPercent"),
       centreWindCardinal: document.querySelector("#centreWindCardinal"),
 
+      ///////////////////////
+      //maybe add this bit into the actual injector function
       3: document.querySelector('[data-hour="3pm"]'),
       12: document.querySelector('[data-hour="12pm"]'),
       6: document.querySelector('[data-hour="6pm"]'),
@@ -38,7 +40,8 @@ const injector = () => {
       // 1 bit of hourly img
       // ONCE(?)
 
-      
+      /////////////////////
+
     };
 
     tags.location.textContent = obj.location.name;
