@@ -12,7 +12,7 @@ const injector = () => {
     
   // };
 
-  const inject = (day) => {
+  const exec = (day) => {
     console.log(localData);
     console.log("Obj retrieved, 'inject' has injected");
 

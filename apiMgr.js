@@ -11,12 +11,11 @@ const apiMgr = () => {
       const response = await fetch(apiURL, { mode: "cors" });
       const data = await response.json();
 
-      console.log(data)
+      //console.log(data)
 
       return data;
     } catch (error) {
-      //console.error("Error: ", error);
-      //throw error;
+      throw error;
     }
   };
 
@@ -26,11 +25,13 @@ const apiMgr = () => {
       const result = await apiFetcher(forecastURL());
       const processedData = dataProcessor(result);
 
-      //console.log("Processed Data:", processedData);
-      
-      locallyStore(processedData);
+      //console.log("Processed Data:", processedData)
+      const fixedData = dateFormatter(processedData);
 
-      return processedData;
+      locallyStore(fixedData);
+      //console.log("Fixed Data:", fixedData);
+
+      return fixedData;
     } catch (error) {
       throw error;
     }
@@ -40,6 +41,19 @@ const apiMgr = () => {
     storage.setLocal("localWeatherCopy", obj)
   }
 
+  const dateFormatter = (processedObj) => {
+    const today = processedObj.location.localtime;
+
+    const tomorrow = addDays(parseISO(today), 1);
+    const todayFormatted = format(parseISO(today), 'EEEE, do MMMM');
+    const tomorrowFormatted = format(tomorrow, 'EEEE, do MMMM');
+
+    processedObj.today.date = todayFormatted;
+    processedObj.tomorrow.date = tomorrowFormatted;
+
+    return processedObj
+}
+
   return { getData };
 };
 
@@ -47,22 +61,6 @@ const dataProcessor = (returnedJson) => {
   // hour should be 0-24
   // day should be 0 or 1
   
-  const dateFormatter = (date) => {
-
-    switch(date) {
-
-      case "today":
-        const formattedDate = format(parseISO(returnedJson.location.localtime), 'EEEE, do MMMM');
-        return formattedDate
-
-      case "tomorrow":
-        const tomorrow = addDays(parseISO(returnedJson.location.localtime), 1);
-        const formattedTomorrow = format(tomorrow, 'EEEE, do MMMM');
-        return formattedTomorrow
-    }
-  }
-
-
   const location = {
     name: returnedJson.location.name,
     country: returnedJson.location.country,
@@ -84,7 +82,7 @@ const dataProcessor = (returnedJson) => {
   });
 
   const today = {
-    date: dateFormatter("today"),
+    // date gets added in after this
     temp_c: Math.trunc(returnedJson.current.temp_c),
     maxtemp: Math.trunc(returnedJson.forecast.forecastday[0].day.maxtemp_c),
     //removes decimals
@@ -106,7 +104,7 @@ const dataProcessor = (returnedJson) => {
   };
 
   const tomorrow = {
-    date: dateFormatter("tomorrow"),
+    // date gets added in after this
     temp_c: Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c),
     maxtemp: Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c),
     //removes decimals
