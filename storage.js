@@ -34,12 +34,8 @@ const storage = {
     // storage.props().location("place") to set
     // storage.props().location() to get
 
-    //const _realTimeDataURL = `http://api.weatherapi.com/v1/current.json?key=${key}&q=${location()}`;
     const _forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location()}&days=2`;
 
-    // const realTimeDataURL = () => {
-    //   return _realTimeDataURL;
-    // }
     const forecastURL = () => {
       return _forecastURL;
     }

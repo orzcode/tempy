@@ -21,6 +21,9 @@ const apiMgr = () => {
 
 
   const getData = async () => {
+    //called "getData" but actually does everything needed
+    //to get AND reconstruct / format the data.
+    
     try {
       const result = await apiFetcher(forecastURL());
       const processedData = dataProcessor(result);
@@ -58,9 +61,19 @@ const apiMgr = () => {
   return { getData };
 };
 
+
+
+
+
 const dataProcessor = (returnedJson) => {
   // hour should be 0-24
   // day should be 0 or 1
+
+  // Re-constructs API data into usable object
+  // Also applies some minor formatting such as adding % or degree, or truncating
+  //
+  // Ideally this should be done elsewhere, as I also have another dateFormat function
+  // However since these are small changes and this is a small project, I'm allowing it!
   
   const location = {
     name: returnedJson.location.name,
