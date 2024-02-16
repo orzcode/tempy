@@ -11,8 +11,8 @@ import injector from "./injector.js";
  let obj = apiMgr().getData();
  console.log(obj)
 
-//injector().exec()
+ //console.log(localData)
 
-//console.log(localData)
+injector().exec("today")
 
 

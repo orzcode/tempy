@@ -23,7 +23,7 @@ const apiMgr = () => {
   const getData = async () => {
     //called "getData" but actually does everything needed
     //to get AND reconstruct / format the data.
-    
+
     try {
       const result = await apiFetcher(forecastURL());
       const processedData = dataProcessor(result);
@@ -90,7 +90,7 @@ const dataProcessor = (returnedJson) => {
       returnedJson.forecast.forecastday[day].hour[hour].chance_of_rain + '%',
     condition: {
       text: returnedJson.forecast.forecastday[day].hour[hour].condition.text,
-      icon: returnedJson.forecast.forecastday[day].hour[hour].condition.icon,
+      icon: returnedJson.forecast.forecastday[day].hour[hour].condition.icon.replace(/\/\/cdn.weatherapi.com\/weather\/64x64\//, "images/conditions/"),
       code: returnedJson.forecast.forecastday[day].hour[hour].condition.code,
     },
   });
@@ -105,7 +105,7 @@ const dataProcessor = (returnedJson) => {
     rainchance: returnedJson.forecast.forecastday[0].day.daily_chance_of_rain + '%',
     condition: {
       text: returnedJson.current.condition.text,
-      icon: returnedJson.current.condition.icon,
+      icon: returnedJson.current.condition.icon.replace(/\/\/cdn.weatherapi.com\/weather\/64x64\//, "images/conditions/"),
       code: returnedJson.current.condition.code,
     },
     hourly: {
@@ -131,7 +131,7 @@ const dataProcessor = (returnedJson) => {
     rainchance: returnedJson.forecast.forecastday[1].day.daily_chance_of_rain + '%',
     condition: {
       text: returnedJson.forecast.forecastday[1].day.condition.text,
-      icon: returnedJson.forecast.forecastday[1].day.condition.icon,
+      icon: returnedJson.forecast.forecastday[1].day.condition.icon.replace(/\/\/cdn.weatherapi.com\/weather\/64x64\//, "images/conditions/"),
       code: returnedJson.forecast.forecastday[1].day.condition.code,
     },
     hourly: {
