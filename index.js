@@ -13,6 +13,6 @@ import injector from "./injector.js";
 
  //console.log(localData)
 
-injector().exec("today")
+injector().exec("tomorrow")
 
 
