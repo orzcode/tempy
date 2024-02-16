@@ -9,9 +9,7 @@ import injector from "./injector.js";
 
 
  let obj = apiMgr().getData();
- console.log(obj)
 
- //console.log(localData)
 
 injector().exec("tomorrow")
 

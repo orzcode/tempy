@@ -11,7 +11,8 @@ const apiMgr = () => {
       const response = await fetch(apiURL, { mode: "cors" });
       const data = await response.json();
 
-      //console.log(data)
+     //console.log(data)
+     //to check the raw API data
 
       return data;
     } catch (error) {
@@ -28,11 +29,13 @@ const apiMgr = () => {
       const result = await apiFetcher(forecastURL());
       const processedData = dataProcessor(result);
 
-      //console.log("Processed Data:", processedData)
       const fixedData = dateFormatter(processedData);
 
+      console.log("Formatted API Data:", fixedData);
+      //checks the Processed & Fixed Data
+
       locallyStore(fixedData);
-      //console.log("Fixed Data:", fixedData);
+      //stores local copy to use instead of calling API each time
 
       return fixedData;
     } catch (error) {
@@ -45,7 +48,9 @@ const apiMgr = () => {
   }
   //stores the data Locally to use.
 
+
   const dateFormatter = (processedObj) => {
+    //formats dates in the object
     const today = processedObj.location.localtime;
 
     const tomorrow = addDays(parseISO(today), 1);
