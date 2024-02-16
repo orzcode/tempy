@@ -40,6 +40,7 @@ const apiMgr = () => {
   const locallyStore = (obj) => {
     storage.setLocal("localWeatherCopy", obj)
   }
+  //stores the data Locally to use.
 
   const dateFormatter = (processedObj) => {
     const today = processedObj.location.localtime;
@@ -68,12 +69,12 @@ const dataProcessor = (returnedJson) => {
   };
 
   const getHourlyData = (day, hour) => ({
-    temp_c: Math.trunc(returnedJson.forecast.forecastday[day].hour[hour].temp_c),
+    temp_c: Math.trunc(returnedJson.forecast.forecastday[day].hour[hour].temp_c) + '°',
     //removes decimals
-    is_day: returnedJson.forecast.forecastday[day].hour[hour].is_day,
+    dayNight: returnedJson.forecast.forecastday[day].hour[hour].is_day ? 'day' : 'night',
     wind_dir: returnedJson.forecast.forecastday[day].hour[hour].wind_dir,
     rainchance:
-      returnedJson.forecast.forecastday[day].hour[hour].chance_of_rain,
+      returnedJson.forecast.forecastday[day].hour[hour].chance_of_rain + '%',
     condition: {
       text: returnedJson.forecast.forecastday[day].hour[hour].condition.text,
       icon: returnedJson.forecast.forecastday[day].hour[hour].condition.icon,
@@ -83,12 +84,12 @@ const dataProcessor = (returnedJson) => {
 
   const today = {
     // date gets added in after this
-    temp_c: Math.trunc(returnedJson.current.temp_c),
-    maxtemp: Math.trunc(returnedJson.forecast.forecastday[0].day.maxtemp_c),
+    temp_c: Math.trunc(returnedJson.current.temp_c) + '°',
+    maxtemp: Math.trunc(returnedJson.forecast.forecastday[0].day.maxtemp_c) + '°',
     //removes decimals
-    is_day: returnedJson.current.is_day,
+    dayNight: returnedJson.current.is_day ? 'day' : 'night',
     wind_dir: returnedJson.current.wind_dir,
-    rainchance: returnedJson.forecast.forecastday[0].day.daily_chance_of_rain,
+    rainchance: returnedJson.forecast.forecastday[0].day.daily_chance_of_rain + '%',
     condition: {
       text: returnedJson.current.condition.text,
       icon: returnedJson.current.condition.icon,
@@ -105,16 +106,16 @@ const dataProcessor = (returnedJson) => {
 
   const tomorrow = {
     // date gets added in after this
-    temp_c: Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c),
-    maxtemp: Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c),
+    temp_c: Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + '°',
+    maxtemp: Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + '°',
     //removes decimals
 
-    is_day: returnedJson.forecast.forecastday[1].hour[16].is_day,
+    dayNight: returnedJson.forecast.forecastday[1].hour[16].is_day ? 'day' : 'night',
     //want 'tomorrow' main to always be day - so grabs 4pm 'isday',
     wind_dir: returnedJson.forecast.forecastday[1].hour[16].wind_dir,
     //grabs the 4pm wind direction
 
-    rainchance: returnedJson.forecast.forecastday[1].day.daily_chance_of_rain,
+    rainchance: returnedJson.forecast.forecastday[1].day.daily_chance_of_rain + '%',
     condition: {
       text: returnedJson.forecast.forecastday[1].day.condition.text,
       icon: returnedJson.forecast.forecastday[1].day.condition.icon,
