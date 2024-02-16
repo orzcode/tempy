@@ -21,12 +21,12 @@ const injector = () => {
     tags.location.textContent = localData.location.name;
 
     tags.centreTemp.textContent = localData[`${ToT}`].temp_c;
-    tags.centreHigh.textContent = localData[`${ToT}`].maxtemp;
+    tags.centreHigh.textContent = "High: " + localData[`${ToT}`].maxtemp;
 
     tags.centreConditionImg.src = localData[`${ToT}`].condition.icon;
     tags.centreConditionText.textContent = localData[`${ToT}`].condition.text;
 
-    tags.centrePrecipPercent.textContent = localData[`${ToT}`].rainchance;
+    tags.centrePrecipPercent.textContent = "Chance: " + localData[`${ToT}`].rainchance;
     tags.centreWindCardinal.textContent = localData[`${ToT}`].wind_dir;
   };
 
