@@ -4,7 +4,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 1px solid black;
+  /* outline: 1px solid black; */
 }
 html {
   background-color: rgb(200, 200, 200);
@@ -124,7 +124,10 @@ body {
 /* ----------------- */
 .hourlySection {
   display: flex;
-  gap: 4rem;
+  outline: 1px solid black;
+gap: 1rem;
+background-color: green;
+  /* Gap between hour columns */
 }
 
 .hourCol {
@@ -132,14 +135,17 @@ body {
   width: 100%;
   text-align: center;
   flex-direction: column;
+  background-color: blue;
+
 }
 .hourTitle {
   font-size: 2rem;
-  /*make everything same size? */
+
 }
 .hourBits {
   height:100%;
-  gap: 1rem;
+  outline: 1px solid black;
+  width: 9rem;
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
@@ -147,9 +153,10 @@ body {
 }
 
 .hBit img {
-  width: 100%;
-  max-width: 4rem;
-  height: auto;
+  /* width: 100%;
+  max-width: 4rem; */
 
+  width: 4rem;
+  height: auto;
 }
 /* ----------------- */

@@ -7,7 +7,7 @@ import DOM from "./DOM.js";
 //storage.props().location("christchurch")
 //console.log(storage.getLocal("localWeatherCopy"))
 ////////////////////////////////////////////
-DOM().applyListeners()
+//DOM().applyListeners()
 
 
 

@@ -11,15 +11,14 @@ const apiMgr = () => {
       const response = await fetch(apiURL, { mode: "cors" });
       const data = await response.json();
 
-     //console.log(data)
-     //to check the raw API data
+      //console.log(data)
+      //to check the raw API data
 
       return data;
     } catch (error) {
       throw error;
     }
   };
-
 
   const getData = async () => {
     //called "getData" but actually does everything needed
@@ -30,6 +29,8 @@ const apiMgr = () => {
       const processedData = dataProcessor(result);
 
       const fixedData = dateFormatter(processedData);
+      fixedData = conditionTextFormatter(fixedData);
+      //put gaps here?
 
       console.log("Formatted API Data:", fixedData);
       //checks the Processed & Fixed Data
@@ -44,31 +45,41 @@ const apiMgr = () => {
   };
 
   const locallyStore = (obj) => {
-    storage.setLocal("localWeatherCopy", obj)
-  }
+    storage.setLocal("localWeatherCopy", obj);
+  };
   //stores the data Locally to use.
-
 
   const dateFormatter = (processedObj) => {
     //formats dates in the object
     const today = processedObj.location.localtime;
 
     const tomorrow = addDays(parseISO(today), 1);
-    const todayFormatted = format(parseISO(today), 'EEEE, do MMMM');
-    const tomorrowFormatted = format(tomorrow, 'EEEE, do MMMM');
+    const todayFormatted = format(parseISO(today), "EEEE, do MMMM");
+    const tomorrowFormatted = format(tomorrow, "EEEE, do MMMM");
 
     processedObj.today.date = todayFormatted;
     processedObj.tomorrow.date = tomorrowFormatted;
 
-    return processedObj
-}
+    return processedObj;
+  };
+
+  const conditionTextFormatter = (processedObj) => {
+    const problemCodes = [1003, 1006];
+
+    problemCodes.forEach((code) => {
+      // Iterate through the object and check for matching condition codes
+      Object.keys(yourObject).forEach((key) => {
+        if (processedObj[key].condition.code === code) {
+          //If any of the condition codes in the data are problem codes, then replace their text:
+          processedObj[key].condition.text = conditionsJSON[code].text;
+        }
+      });
+    });
+    return processedObj;
+  };
 
   return { getData };
 };
-
-
-
-
 
 const dataProcessor = (returnedJson) => {
   // hour should be 0-24
@@ -79,7 +90,7 @@ const dataProcessor = (returnedJson) => {
   //
   // Ideally this should be done elsewhere, as I also have another dateFormat function
   // However since these are small changes and this is a small project, I'm allowing it!
-  
+
   const location = {
     name: returnedJson.location.name,
     country: returnedJson.location.country,
@@ -87,30 +98,44 @@ const dataProcessor = (returnedJson) => {
   };
 
   const getHourlyData = (day, hour) => ({
-    temp_c: Math.trunc(returnedJson.forecast.forecastday[day].hour[hour].temp_c) + '°',
+    temp_c:
+      Math.trunc(returnedJson.forecast.forecastday[day].hour[hour].temp_c) +
+      "°",
     //removes decimals
-    dayNight: returnedJson.forecast.forecastday[day].hour[hour].is_day ? 'day' : 'night',
+    dayNight: returnedJson.forecast.forecastday[day].hour[hour].is_day
+      ? "day"
+      : "night",
     wind_dir: returnedJson.forecast.forecastday[day].hour[hour].wind_dir,
     rainchance:
-      returnedJson.forecast.forecastday[day].hour[hour].chance_of_rain + '%',
+      returnedJson.forecast.forecastday[day].hour[hour].chance_of_rain + "%",
     condition: {
       text: returnedJson.forecast.forecastday[day].hour[hour].condition.text,
-      icon: returnedJson.forecast.forecastday[day].hour[hour].condition.icon.replace(/\/\/cdn.weatherapi.com\/weather\/64x64\//, "images/conditions/"),
+      icon: returnedJson.forecast.forecastday[day].hour[
+        hour
+      ].condition.icon.replace(
+        /\/\/cdn.weatherapi.com\/weather\/64x64\//,
+        "images/conditions/"
+      ),
       code: returnedJson.forecast.forecastday[day].hour[hour].condition.code,
     },
   });
 
   const today = {
     // date gets added in after this
-    temp_c: Math.trunc(returnedJson.current.temp_c) + '°',
-    maxtemp: Math.trunc(returnedJson.forecast.forecastday[0].day.maxtemp_c) + '°',
+    temp_c: Math.trunc(returnedJson.current.temp_c) + "°",
+    maxtemp:
+      Math.trunc(returnedJson.forecast.forecastday[0].day.maxtemp_c) + "°",
     //removes decimals
-    dayNight: returnedJson.current.is_day ? 'day' : 'night',
+    dayNight: returnedJson.current.is_day ? "day" : "night",
     wind_dir: returnedJson.current.wind_dir,
-    rainchance: returnedJson.forecast.forecastday[0].day.daily_chance_of_rain + '%',
+    rainchance:
+      returnedJson.forecast.forecastday[0].day.daily_chance_of_rain + "%",
     condition: {
       text: returnedJson.current.condition.text,
-      icon: returnedJson.current.condition.icon.replace(/\/\/cdn.weatherapi.com\/weather\/64x64\//, "images/conditions/"),
+      icon: returnedJson.current.condition.icon.replace(
+        /\/\/cdn.weatherapi.com\/weather\/64x64\//,
+        "images/conditions/"
+      ),
       code: returnedJson.current.condition.code,
     },
     hourly: {
@@ -124,19 +149,27 @@ const dataProcessor = (returnedJson) => {
 
   const tomorrow = {
     // date gets added in after this
-    temp_c: Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + '°',
-    maxtemp: Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + '°',
+    temp_c:
+      Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + "°",
+    maxtemp:
+      Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + "°",
     //removes decimals
 
-    dayNight: returnedJson.forecast.forecastday[1].hour[16].is_day ? 'day' : 'night',
+    dayNight: returnedJson.forecast.forecastday[1].hour[16].is_day
+      ? "day"
+      : "night",
     //want 'tomorrow' main to always be day - so grabs 4pm 'isday',
     wind_dir: returnedJson.forecast.forecastday[1].hour[16].wind_dir,
     //grabs the 4pm wind direction
 
-    rainchance: returnedJson.forecast.forecastday[1].day.daily_chance_of_rain + '%',
+    rainchance:
+      returnedJson.forecast.forecastday[1].day.daily_chance_of_rain + "%",
     condition: {
       text: returnedJson.forecast.forecastday[1].day.condition.text,
-      icon: returnedJson.forecast.forecastday[1].day.condition.icon.replace(/\/\/cdn.weatherapi.com\/weather\/64x64\//, "images/conditions/"),
+      icon: returnedJson.forecast.forecastday[1].day.condition.icon.replace(
+        /\/\/cdn.weatherapi.com\/weather\/64x64\//,
+        "images/conditions/"
+      ),
       code: returnedJson.forecast.forecastday[1].day.condition.code,
     },
     hourly: {
