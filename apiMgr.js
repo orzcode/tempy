@@ -1,4 +1,5 @@
 import storage from "./storage.js";
+import conditionsJSON from './conditionsJSON.json';
 import { format, parseISO, addDays } from "date-fns";
 
 const apiMgr = () => {
@@ -29,16 +30,17 @@ const apiMgr = () => {
       const processedData = dataProcessor(result);
 
       const fixedData = dateFormatter(processedData);
-      fixedData = conditionTextFormatter(fixedData);
+      
+      const finalData = conditionTextFormatter(fixedData);
       //put gaps here?
 
-      console.log("Formatted API Data:", fixedData);
+      console.log("Final API Data:", finalData);
       //checks the Processed & Fixed Data
 
-      locallyStore(fixedData);
+      locallyStore(finalData);
       //stores local copy to use instead of calling API each time
 
-      return fixedData;
+      return finalData;
     } catch (error) {
       throw error;
     }
@@ -62,22 +64,27 @@ const apiMgr = () => {
 
     return processedObj;
   };
-
+//////////////////////////////////////////////////////////////////////////////////////////////
   const conditionTextFormatter = (processedObj) => {
-    const problemCodes = [1003, 1006];
-
-    problemCodes.forEach((code) => {
+    const traverseObject = (obj) => {
       // Iterate through the object and check for matching condition codes
-      Object.keys(yourObject).forEach((key) => {
-        if (processedObj[key].condition.code === code) {
-          //If any of the condition codes in the data are problem codes, then replace their text:
-          processedObj[key].condition.text = conditionsJSON[code].text;
+      Object.keys(obj).forEach((key) => {
+        if (obj[key] && typeof obj[key] === 'object') {
+          traverseObject(obj[key]);
+        } else if (key === 'condition' && obj[key].code) {console.log("fuck")
+          // Convert code to string and update the text
+          const codeAsString = obj[key].code.toString();
+          obj[key].text = conditionsJSON[codeAsString].text;
         }
       });
-    });
+    };
+  
+    // Start traversing the object
+    traverseObject(processedObj);
+  
     return processedObj;
-  };
-
+  };///////////////////////////////////////////////   DOGWATER CODE ///////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////
   return { getData };
 };
 

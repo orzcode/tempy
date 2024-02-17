@@ -7,7 +7,8 @@ import DOM from "./DOM.js";
 //storage.props().location("christchurch")
 //console.log(storage.getLocal("localWeatherCopy"))
 ////////////////////////////////////////////
-//DOM().applyListeners()
+DOM().applyListeners()
 
-
+apiMgr().getData()
+//need to make getdata call injector, and the onclick be getData?
 
