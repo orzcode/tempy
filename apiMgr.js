@@ -1,5 +1,5 @@
 import storage from "./storage.js";
-import conditionsJSON from './conditionsJSON.json';
+import conditionsJSON from "./conditionsJSON.json";
 import { format, parseISO, addDays } from "date-fns";
 
 const apiMgr = () => {
@@ -30,7 +30,7 @@ const apiMgr = () => {
       const processedData = dataProcessor(result);
 
       const fixedData = dateFormatter(processedData);
-      
+
       const finalData = conditionTextFormatter(fixedData);
       //put gaps here?
 
@@ -64,27 +64,28 @@ const apiMgr = () => {
 
     return processedObj;
   };
-//////////////////////////////////////////////////////////////////////////////////////////////
+
   const conditionTextFormatter = (processedObj) => {
+
     const traverseObject = (obj) => {
-      // Iterate through the object and check for matching condition codes
+
       Object.keys(obj).forEach((key) => {
-        if (obj[key] && typeof obj[key] === 'object') {
-          traverseObject(obj[key]);
-        } else if (key === 'condition' && obj[key].code) {console.log("fuck")
-          // Convert code to string and update the text
+        if (key === "condition") {
+          // Convert code to string (so JSON accepts it) and update the text based on JSON
           const codeAsString = obj[key].code.toString();
-          obj[key].text = conditionsJSON[codeAsString].text;
+          obj[key].text = conditionsJSON[codeAsString].text;          
+        } else if (typeof obj[key] === "object") {
+          traverseObject(obj[key]); 
+          //recursive function - if the key is another sub-object
         }
       });
     };
-  
     // Start traversing the object
     traverseObject(processedObj);
-  
+
     return processedObj;
-  };///////////////////////////////////////////////   DOGWATER CODE ///////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////
+  }; 
+
   return { getData };
 };
 

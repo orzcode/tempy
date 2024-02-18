@@ -145,7 +145,6 @@ background-color: green;
 .hourBits {
   height:100%;
   outline: 1px solid black;
-  width: 9rem;
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
