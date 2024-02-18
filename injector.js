@@ -1,9 +1,8 @@
 // injector.js
 import storage from "./storage.js";
+import apiMgr from "./apiMgr.js";
 
 const injector = () => {
-  const localData = storage.getLocal("localWeatherCopy");
-
   const tags = {
     date: document.querySelector("#date"),
     location: document.querySelector("#location"),
@@ -22,6 +21,8 @@ const injector = () => {
   };
 
   const injMain = (ToT) => {
+    const localData = storage.getLocal("localWeatherCopy");
+
     const data = localData[ToT];
 
     updateElementContent(tags.date, data.date);
@@ -30,21 +31,33 @@ const injector = () => {
     updateElementContent(tags.centreHigh, `High: ${data.maxtemp}`);
     updateElementContent(tags.centreConditionImg, data.condition.icon);
     updateElementContent(tags.centreConditionText, data.condition.text);
-    updateElementContent(tags.centrePrecipPercent, `Chance: ${data.rainchance}`);
+    updateElementContent(
+      tags.centrePrecipPercent,
+      `Chance: ${data.rainchance}`
+    );
     updateElementContent(tags.centreWindCardinal, data.wind_dir);
   };
 
   const injHours = (ToT) => {
+    const localData = storage.getLocal("localWeatherCopy");
+
     const hoursToUpdate = [12, 3, 6, 9];
 
     for (const hour of hoursToUpdate) {
       const hourlyData = localData[ToT].hourly[hour];
       const parentElement = document.querySelector(`[data-hour="${hour}"]`);
 
-      const conditionImgElement = parentElement.querySelector(".hourlyConditionImg");
-      const conditionTextElement = parentElement.querySelector(".hourlyConditionText");
-      const rainChanceElement = parentElement.querySelector(".hourlyRainChance");
-      const windDirectionElement = parentElement.querySelector(".hourlyWindDirection");
+      const conditionImgElement = parentElement.querySelector(
+        ".hourlyConditionImg"
+      );
+      const conditionTextElement = parentElement.querySelector(
+        ".hourlyConditionText"
+      );
+      const rainChanceElement =
+        parentElement.querySelector(".hourlyRainChance");
+      const windDirectionElement = parentElement.querySelector(
+        ".hourlyWindDirection"
+      );
 
       updateElementContent(conditionImgElement, hourlyData.condition.icon);
       updateElementContent(conditionTextElement, hourlyData.condition.text);
@@ -52,12 +65,19 @@ const injector = () => {
       updateElementContent(windDirectionElement, hourlyData.wind_dir);
     }
   };
-
+////////////////////////////////////////////
+//Main execution function.
+//Gets data, then injects.
+////////////////////////////////////////////
   const exec = (ToT) => {
-    injMain(ToT);
-    injHours(ToT);
+    apiMgr()
+      .getData()
+      .then(() => {
+        injMain(ToT);
+        injHours(ToT);
+      });
   };
-
+////////////////////////////////////////////
   return { exec };
 };
 
