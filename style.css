@@ -124,9 +124,9 @@ body {
 /* ----------------- */
 .hourlySection {
   display: flex;
-  outline: 1px solid black;
-gap: 1rem;
-background-color: green;
+  gap: 1rem;
+  height: 20rem;
+
   /* Gap between hour columns */
 }
 
@@ -135,16 +135,14 @@ background-color: green;
   width: 100%;
   text-align: center;
   flex-direction: column;
-  background-color: blue;
 
 }
 .hourTitle {
   font-size: 2rem;
-
 }
 .hourBits {
-  height:100%;
-  outline: 1px solid black;
+  height: 100%;
+
   display: grid;
   align-items: center;
   grid-template-columns: 1fr 1fr;
