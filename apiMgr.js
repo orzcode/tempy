@@ -1,6 +1,6 @@
 import storage from "./storage.js";
 import conditionsJSON from "./conditionsJSON.json";
-import { format, parseISO, addDays } from "date-fns";
+import { format, parseISO, parse, addDays } from "date-fns";
 
 const apiMgr = () => {
   const forecastURL = storage.props().forecastURL;
@@ -32,15 +32,16 @@ const apiMgr = () => {
       const fixedData = dateFormatter(processedData);
 
       const finalData = conditionTextFormatter(fixedData);
-      //put gaps here?
+      
+      const finalData2 = currentRainFormatter(finalData, result)
 
-      console.log("Final API Data:", finalData);
+      console.log("Final API Data:", finalData2);
       //checks the Processed & Fixed Data
 
-      locallyStore(finalData);
+      locallyStore(finalData2);
       //stores local copy to use instead of calling API each time
 
-      return finalData;
+      return finalData2;
     } catch (error) {
       throw error;
     }
@@ -66,25 +67,33 @@ const apiMgr = () => {
   };
 
   const conditionTextFormatter = (processedObj) => {
-
     const traverseObject = (obj) => {
-
       Object.keys(obj).forEach((key) => {
         if (key === "condition") {
           // Convert code to string (so JSON accepts it) and update the text based on JSON
           const codeAsString = obj[key].code.toString();
-          obj[key].text = conditionsJSON[codeAsString].text;          
+          obj[key].text = conditionsJSON[codeAsString].text;
         } else if (typeof obj[key] === "object") {
-          traverseObject(obj[key]); 
+          traverseObject(obj[key]);
           //recursive function - if the key is another sub-object
         }
       });
     };
     // Start traversing the object
     traverseObject(processedObj);
-
     return processedObj;
-  }; 
+  };
+
+  const currentRainFormatter = (processedObj, ogObj) => {
+    //gets the rainchance for the CURRENT hour at time of fetch.
+    //we do this because the 'daily rain chance' is a bit bullshit for the current time.
+    const objLocaltime = processedObj.location.localtime;
+    const parseHour = parse(objLocaltime, "yyyy-MM-dd HH:mm", new Date());
+    const currentHour = format(parseHour, "HH");
+
+    processedObj.today.rainchance = ogObj.forecast.forecastday[0].hour[currentHour].chance_of_rain + "%";
+    return processedObj;
+  };
 
   return { getData };
 };
@@ -133,10 +142,10 @@ const dataProcessor = (returnedJson) => {
     temp_c: Math.trunc(returnedJson.current.temp_c) + "°",
 
     maxtemp:
-    //if maxtemp is lower than any curr temp,
-    //then maxtemp = curr temp
-    //will have to do this in formatter-style, and remove degree symbols here
-    //note: only for today, not tomorrow, not hourly
+      //if maxtemp is lower than any curr temp,
+      //then maxtemp = curr temp
+      //will have to do this in formatter-style, and remove degree symbols here
+      //note: only for today, not tomorrow, not hourly
 
       Math.trunc(returnedJson.forecast.forecastday[0].day.maxtemp_c) + "°",
     //removes decimals
@@ -144,8 +153,9 @@ const dataProcessor = (returnedJson) => {
     dayNight: returnedJson.current.is_day ? "day" : "night",
     wind_dir: returnedJson.current.wind_dir,
     rainchance:
-      returnedJson.forecast.forecastday[0].day.daily_chance_of_rain + "%",
-      //need to make this rain chance at HOUR of viewing
+      returnedJson.forecast.forecastday[0].day.daily_chance_of_rain,
+    //gets re-formatted to current hour during getData
+    
     condition: {
       text: returnedJson.current.condition.text,
       icon: returnedJson.current.condition.icon.replace(
