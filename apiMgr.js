@@ -12,7 +12,7 @@ const apiMgr = () => {
       const response = await fetch(apiURL, { mode: "cors" });
       const data = await response.json();
 
-      //console.log("Raw API Data:", data);
+      console.log("Raw API Data:", data);
       //to check the raw API data
 
       return data;
@@ -131,13 +131,21 @@ const dataProcessor = (returnedJson) => {
   const today = {
     // date gets added in after this
     temp_c: Math.trunc(returnedJson.current.temp_c) + "°",
+
     maxtemp:
+    //if maxtemp is lower than any curr temp,
+    //then maxtemp = curr temp
+    //will have to do this in formatter-style, and remove degree symbols here
+    //note: only for today, not tomorrow, not hourly
+
       Math.trunc(returnedJson.forecast.forecastday[0].day.maxtemp_c) + "°",
     //removes decimals
+
     dayNight: returnedJson.current.is_day ? "day" : "night",
     wind_dir: returnedJson.current.wind_dir,
     rainchance:
       returnedJson.forecast.forecastday[0].day.daily_chance_of_rain + "%",
+      //need to make this rain chance at HOUR of viewing
     condition: {
       text: returnedJson.current.condition.text,
       icon: returnedJson.current.condition.icon.replace(
