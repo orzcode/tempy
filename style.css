@@ -15,6 +15,7 @@ html {
   scroll-behavior: smooth;
   caret-color: transparent;
   overflow-x: hidden;
+  user-select: none;
 }
 body {
   font-size: 2rem;
@@ -41,7 +42,7 @@ body {
   display: flex;
   justify-content: center;
   min-height: 100vh;
-  width: 100%;
+  width: 100vw;
   max-width: 100vw;
 
   align-items: center;
@@ -49,10 +50,9 @@ body {
 
 .mainContainer {
   width: 500px;
-  height: 800px;
-  padding: 1rem;
-  border-radius: 10px;
+  height: 650px;
   background-color: rgb(176, 146, 109);
+  /*Can add padding here once hour column width is set*/
 
   /* display: grid; */
 
@@ -74,7 +74,6 @@ body {
   justify-content: space-evenly;
   border-bottom: 2px solid black;
   height: min-content;
-  padding: 1rem;
 }
 .topTabs * {
   cursor: pointer;
@@ -126,14 +125,20 @@ body {
 .hourlySection {
   display: flex;
   gap: 1rem;
-  height: 20rem;
+  height: 18rem;
+justify-content: space-between;
+  font-size: 1.8rem;
+  padding: 0 2px;
 
   /* Gap between hour columns */
 }
 
 .hourCol {
   display: flex;
+/* background-color: pink; */
   width: 100%;
+  max-width: 11rem;
+
   text-align: center;
   flex-direction: column;
 }
@@ -145,14 +150,16 @@ body {
 
   display: grid;
   align-items: center;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 4rem 1fr;
   grid-template-rows: 1fr 1fr 1fr;
+}
+.hBit {
+  text-align: center;
 }
 
 .hBit img {
   /* width: 100%;
   max-width: 4rem; */
-
   width: 4rem;
   height: auto;
 }
