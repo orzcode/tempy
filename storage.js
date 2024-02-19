@@ -34,7 +34,7 @@ const storage = {
     // storage.props().location("place") to set
     // storage.props().location() to get
 
-    const _forecastURL = `http://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location()}&days=2`;
+    const _forecastURL = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location()}&days=2`;
 
     const forecastURL = () => {
       return _forecastURL;
