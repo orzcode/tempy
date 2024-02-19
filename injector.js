@@ -69,14 +69,11 @@ const injector = () => {
 //Main execution function.
 //Gets data, then injects.
 ////////////////////////////////////////////
-  const exec = (ToT) => {
-    apiMgr()
-      .getData()
-      .then(() => {
-        injMain(ToT);
-        injHours(ToT);
-      });
-  };
+const exec = async (ToT) => {
+  await apiMgr().getData();
+  injMain(ToT);
+  injHours(ToT);
+};
 ////////////////////////////////////////////
   return { exec };
 };

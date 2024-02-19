@@ -12,7 +12,7 @@ const apiMgr = () => {
       const response = await fetch(apiURL, { mode: "cors" });
       const data = await response.json();
 
-      //console.log(data)
+      //console.log("Raw API Data:", data);
       //to check the raw API data
 
       return data;
