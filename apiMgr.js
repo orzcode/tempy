@@ -32,8 +32,8 @@ const apiMgr = () => {
       const fixedData = dateFormatter(processedData);
 
       const finalData = conditionTextFormatter(fixedData);
-      
-      const finalData2 = currentRainFormatter(finalData, result)
+
+      const finalData2 = currentRainFormatter(finalData, result);
 
       console.log("Final API Data:", finalData2);
       //checks the Processed & Fixed Data
@@ -91,11 +91,31 @@ const apiMgr = () => {
     const parseHour = parse(objLocaltime, "yyyy-MM-dd HH:mm", new Date());
     const currentHour = format(parseHour, "HH");
 
-    processedObj.today.rainchance = ogObj.forecast.forecastday[0].hour[currentHour].chance_of_rain + "%";
+    processedObj.today.rainchance =
+      ogObj.forecast.forecastday[0].hour[currentHour].chance_of_rain + "%";
     return processedObj;
   };
 
-  return { getData };
+  const maxTempFormatter = (ogObj, day) => {
+    //this function gets called from DataProcessor
+    const hourArr = [];
+    for (let i = 0; i < 24; i++) {
+      const hourlyTemp = ogObj.forecast.forecastday[day].hour[i].temp_c;
+      hourArr.push(hourlyTemp);
+    }
+    //make array of 0-24 hourly temps
+
+    let highestNumber = hourArr[0];
+    hourArr.forEach((tempVal) => {
+      if (tempVal > highestNumber) {
+        highestNumber = tempVal;
+      }
+    });
+    //find highest temperature amongst those 24 hour temps
+    return Math.trunc(highestNumber) + "°";
+  };
+
+  return { getData, maxTempFormatter };
 };
 
 const dataProcessor = (returnedJson) => {
@@ -142,20 +162,17 @@ const dataProcessor = (returnedJson) => {
     temp_c: Math.trunc(returnedJson.current.temp_c) + "°",
 
     maxtemp:
-      //if maxtemp is lower than any curr temp,
-      //then maxtemp = curr temp
-      //will have to do this in formatter-style, and remove degree symbols here
-      //note: only for today, not tomorrow, not hourly
-
-      Math.trunc(returnedJson.forecast.forecastday[0].day.maxtemp_c) + "°",
-    //removes decimals
+      //due to bullshit api not showing real max temp
+      //this calls a function to get the real max temp.
+      //
+      //decimal trunc and degree symbol applied within function.
+      apiMgr().maxTempFormatter(returnedJson, 0),
 
     dayNight: returnedJson.current.is_day ? "day" : "night",
     wind_dir: returnedJson.current.wind_dir,
-    rainchance:
-      returnedJson.forecast.forecastday[0].day.daily_chance_of_rain,
+    rainchance: returnedJson.forecast.forecastday[0].day.daily_chance_of_rain,
     //gets re-formatted to current hour during getData
-    
+
     condition: {
       text: returnedJson.current.condition.text,
       icon: returnedJson.current.condition.icon.replace(
@@ -177,9 +194,9 @@ const dataProcessor = (returnedJson) => {
     // date gets added in after this
     temp_c:
       Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + "°",
-    maxtemp:
-      Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + "°",
-    //removes decimals
+      
+    maxtemp: apiMgr().maxTempFormatter(returnedJson, 1),
+    //
 
     dayNight: returnedJson.forecast.forecastday[1].hour[16].is_day
       ? "day"
