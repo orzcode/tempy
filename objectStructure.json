@@ -2,124 +2,124 @@
     "location": {
         "name": "Christchurch",
         "country": "New Zealand",
-        "localtime": "2024-02-16 17:50"
+        "localtime": "2024-02-20 16:11"
     },
     "today": {
+        "temp_c": "17°",
+        "maxtemp": "16°",
+        "dayNight": "day",
+        "wind_dir": "SE",
+        "rainchance": "0%",
+        "condition": {
+            "text": "Clear",
+            "icon": "images/conditions/day/113.png",
+            "code": 1000
+        },
+        "hourly": {
+            "3": {
+                "temp_c": "16°",
+                "dayNight": "day",
+                "wind_dir": "E",
+                "rainchance": "0%",
+                "condition": {
+                    "text": "Clear",
+                    "icon": "images/conditions/day/113.png",
+                    "code": 1000
+                }
+            },
+            "6": {
+                "temp_c": "14°",
+                "dayNight": "day",
+                "wind_dir": "ENE",
+                "rainchance": "0%",
+                "condition": {
+                    "text": "Clear",
+                    "icon": "images/conditions/day/113.png",
+                    "code": 1000
+                }
+            },
+            "9": {
+                "temp_c": "11°",
+                "dayNight": "night",
+                "wind_dir": "ENE",
+                "rainchance": "0%",
+                "condition": {
+                    "text": "Clear",
+                    "icon": "images/conditions/night/113.png",
+                    "code": 1000
+                }
+            },
+            "12": {
+                "temp_c": "13°",
+                "dayNight": "day",
+                "wind_dir": "SSW",
+                "rainchance": "0%",
+                "condition": {
+                    "text": "Cloudy",
+                    "icon": "images/conditions/day/116.png",
+                    "code": 1003
+                }
+            }
+        },
+        "date": "Tuesday, 20th February"
+    },
+    "tomorrow": {
         "temp_c": "18°",
         "maxtemp": "18°",
         "dayNight": "day",
         "wind_dir": "E",
         "rainchance": "0%",
         "condition": {
-            "text": "Partly cloudy",
-            "icon": "images/conditions/day/116.png",
-            "code": 1003
+            "text": "Clear",
+            "icon": "images/conditions/day/113.png",
+            "code": 1000
         },
         "hourly": {
             "3": {
-                "temp_c": "18°",
-                "dayNight": "day",
-                "wind_dir": "ENE",
-                "rainchance": "0%",
-                "condition": {
-                    "text": "Partly Cloudy ",
-                    "icon": "images/conditions/day/116.png",
-                    "code": 1003
-                }
-            },
-            "6": {
-                "temp_c": "16°",
-                "dayNight": "day",
-                "wind_dir": "ENE",
-                "rainchance": "0%",
-                "condition": {
-                    "text": "Sunny",
-                    "icon": "images/conditions/day/113.png",
-                    "code": 1000
-                }
-            },
-            "9": {
-                "temp_c": "14°",
-                "dayNight": "night",
-                "wind_dir": "ENE",
-                "rainchance": "0%",
-                "condition": {
-                    "text": "Partly Cloudy ",
-                    "icon": "images/conditions/night/116.png",
-                    "code": 1003
-                }
-            },
-            "12": {
-                "temp_c": "18°",
+                "temp_c": "17°",
                 "dayNight": "day",
                 "wind_dir": "E",
                 "rainchance": "0%",
                 "condition": {
-                    "text": "Cloudy ",
-                    "icon": "images/conditions/day/119.png",
-                    "code": 1006
-                }
-            }
-        },
-        "date": "Friday, 16th February"
-    },
-    "tomorrow": {
-        "temp_c": "20°",
-        "maxtemp": "20°",
-        "dayNight": "day",
-        "wind_dir": "E",
-        "rainchance": "0%",
-        "condition": {
-            "text": "Cloudy ",
-            "icon": "images/conditions/day/119.png",
-            "code": 1006
-        },
-        "hourly": {
-            "3": {
-                "temp_c": "20°",
-                "dayNight": "day",
-                "wind_dir": "ESE",
-                "rainchance": "0%",
-                "condition": {
-                    "text": "Sunny",
+                    "text": "Clear",
                     "icon": "images/conditions/day/113.png",
                     "code": 1000
                 }
             },
             "6": {
-                "temp_c": "18°",
+                "temp_c": "15°",
                 "dayNight": "day",
                 "wind_dir": "ENE",
                 "rainchance": "0%",
                 "condition": {
-                    "text": "Partly Cloudy ",
-                    "icon": "images/conditions/day/116.png",
-                    "code": 1003
+                    "text": "Clear",
+                    "icon": "images/conditions/day/113.png",
+                    "code": 1000
                 }
             },
             "9": {
-                "temp_c": "15°",
+                "temp_c": "12°",
                 "dayNight": "night",
-                "wind_dir": "ENE",
+                "wind_dir": "NE",
                 "rainchance": "0%",
                 "condition": {
-                    "text": "Mist",
-                    "icon": "images/conditions/night/143.png",
-                    "code": 1030
+                    "text": "Clear",
+                    "icon": "images/conditions/night/113.png",
+                    "code": 1000
                 }
             },
             "12": {
-                "temp_c": "20°",
+                "temp_c": "17°",
                 "dayNight": "day",
-                "wind_dir": "SE",
+                "wind_dir": "ESE",
                 "rainchance": "0%",
                 "condition": {
-                    "text": "Partly Cloudy ",
-                    "icon": "images/conditions/day/116.png",
-                    "code": 1003
+                    "text": "Clear",
+                    "icon": "images/conditions/day/113.png",
+                    "code": 1000
                 }
             }
         },
-        "date": "Saturday, 17th February"
+        "date": "Wednesday, 21st February"
     }
 }

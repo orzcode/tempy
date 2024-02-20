@@ -15,9 +15,11 @@ const injector = () => {
   };
 
   const updateElementContent = (element, content) => {
-    if (element) {
-      element.textContent = content;
-    }
+    if (element.src !== undefined) {
+      element.src = content
+      //checks to see if element is an image - if so, replaces the src
+      //rather than the textconent
+    }else element.textContent = content;
   };
 
   const injMain = (ToT) => {
