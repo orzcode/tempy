@@ -6,8 +6,9 @@ import DOM from "./DOM.js";
 
 
 //storage.props().location("christchurch")
-// console.log(storage.props().location())
+ //console.log(storage.props().location())
 //REMOVE THIS ONCE FINISHED
+
 
 
 

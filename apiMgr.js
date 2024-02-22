@@ -54,11 +54,12 @@ const apiMgr = () => {
 
   const dateFormatter = (processedObj) => {
     //formats dates in the object
-    const today = processedObj.location.localtime;
-
-    const tomorrow = addDays(parseISO(today), 1);
-    const todayFormatted = format(parseISO(today), "EEEE, do MMMM");
-    const tomorrowFormatted = format(tomorrow, "EEEE, do MMMM");
+    const today = format(processedObj.location.localtime, "yyyy-MM-dd'T'HH:mm:ss");
+      //accounts for missing 0 if hour is single digit. sigh.
+    const tomorrow = addDays(today, 1);
+   
+    const todayFormatted = format(parseISO(today), "EEEE do MMMM");
+    const tomorrowFormatted = format(tomorrow, "EEEE do MMMM");
 
     processedObj.today.date = todayFormatted;
     processedObj.tomorrow.date = tomorrowFormatted;
@@ -89,7 +90,7 @@ const apiMgr = () => {
     //we do this because the 'daily rain chance' is a bit bullshit for the current time.
     const objLocaltime = processedObj.location.localtime;
     const parseHour = parse(objLocaltime, "yyyy-MM-dd HH:mm", new Date());
-    const currentHour = format(parseHour, "HH");
+    const currentHour = format(parseHour, "H");
 
     processedObj.today.rainchance =
       ogObj.forecast.forecastday[0].hour[currentHour].chance_of_rain + "%";

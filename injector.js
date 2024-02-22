@@ -28,7 +28,8 @@ const injector = () => {
     const data = localData[ToT];
 
     updateElementContent(tags.date, data.date);
-    updateElementContent(tags.location, localData.location.name);
+    tags.location.value = localData.location.name;
+    //location field is an anomaly (input, not mere text) - hence the oddness
     updateElementContent(tags.centreTemp, data.temp_c);
     updateElementContent(tags.centreHigh, `High: ${data.maxtemp}`);
     updateElementContent(tags.centreConditionImg, data.condition.icon);
@@ -77,7 +78,7 @@ const exec = async (ToT) => {
   injHours(ToT);
 };
 ////////////////////////////////////////////
-  return { exec };
+  return { exec, updateElementContent, tags };
 };
 
 export default injector;

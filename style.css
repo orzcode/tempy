@@ -31,11 +31,18 @@ a {
   text-decoration: none;
   color: initial;
 }
+:root {
+  --mainBG: rgb(176, 146, 109);
+  --placeholder: rgb(50, 50, 50);
+}
 /* ---------------------------------------------------- */
 /* ---------------------------------------------------- */
 ::selection {
-  color: rgb(200, 200, 200);
+  color: rgb(250, 250, 250);
   background: rgb(50, 50, 50);
+}
+::placeholder {
+  color: var(--placeholder);
 }
 /* ---------------------------------------------------- */
 body {
@@ -51,7 +58,7 @@ body {
 .mainContainer {
   width: 500px;
   height: 650px;
-  background-color: rgb(176, 146, 109);
+  background-color: var(--mainBG);
   /*Can add padding here once hour column width is set*/
 
   /* display: grid; */
@@ -66,7 +73,31 @@ body {
 .dateLocation {
   height: min-content;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  text-align: center;
+  width: 400px;
+  margin: 0 auto;
+}
+/* ----------------- */
+#date {
+  /*This section spacing/styling is a bit slapjack*/
+}
+#location {
+  border: none;
+  outline: none;
+  font-size: 2rem;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  /*Above is the input styling, removed*/
+
+  caret-color: var(--placeholder);
+  background-color: var(--mainBG);
+  text-align: center;
+  width: 140px;
+}
+#location:hover {
+  outline: 1px solid var(--placeholder);
+  border-radius: 1rem;
 }
 /* ----------------- */
 .topTabs {
@@ -82,7 +113,6 @@ body {
 .centreDetails {
   display: flex;
   justify-content: space-around;
-  align-items: center;
 }
 
 .centreTempAndHigh,
@@ -98,6 +128,7 @@ body {
   height: 14rem;
   width: 14rem;
   font-size: clamp(4vw, 10rem, 11rem);
+  text-align: center;
 }
 
 .centreConditionImg img,
@@ -125,17 +156,17 @@ body {
 .hourlySection {
   display: flex;
   gap: 1rem;
-  height: 18rem;
-justify-content: space-between;
+  height: 19rem;
+  justify-content: space-between;
   font-size: 1.8rem;
-  padding: 0 2px;
+  padding: 0 0 0 2px;
 
   /* Gap between hour columns */
 }
 
 .hourCol {
   display: flex;
-/* background-color: pink; */
+  /* background-color: pink; */
   width: 100%;
   max-width: 11rem;
 
