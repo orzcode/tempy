@@ -14,8 +14,8 @@
     />
     <title>Tempy</title>
     <link rel="icon" type="image/x-icon" href="/tempy/assets/favicon-2Mfln62u.ico" />
-    <script type="module" crossorigin src="/tempy/assets/index-8YRtTvtX.js"></script>
-    <link rel="stylesheet" crossorigin href="/tempy/assets/index-MUbTBL4L.css">
+    <script type="module" crossorigin src="/tempy/assets/index-93jXl9hy.js"></script>
+    <link rel="stylesheet" crossorigin href="/tempy/assets/index-BBBv178r.css">
   </head>
   <body>
     <div class="mainContainer">
@@ -23,18 +23,21 @@
         <h2 id="today">Today</h2>
         <h2 id="tomorrow">Tomorrow</h2>
       </div>
-      <div class="dateLocation"><p id="date">"2024-02-12 13:45"</p><p id="location">"Christchurch"</p></div>
+      <div class="dateLocation"><p id="date">Loading</p>
+        <!--  value="x" is the default value of the input itselt -->
+        <!-- could leave blank and insert with the user's location after pageload? -->
+        <input type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z]" placeholder="Enter city name" autocomplete="off"></div>
 
       <div class="centreDetails">
         <div class="centreTempAndHigh">
-          <div class="centreTemp" id="centreTemp">23°</div>
-          <div class="centreHigh" id="centreHigh">High 27°</div>
+          <div class="centreTemp" id="centreTemp">???</div>
+          <div class="centreHigh" id="centreHigh">Loading</div>
         </div>
         <div class="centreConditions">
           <div class="centreConditionImg">
             <img src="images/conditions/day/122.png" alt="condition" id="centreConditionImg"/>
           </div>
-          <div class="centreConditionText" id="centreConditionText">Showers</div>
+          <div class="centreConditionText" id="centreConditionText">Loading</div>
         </div>
       </div>
 
@@ -43,14 +46,14 @@
           <div class="centrePrecipImg">
             <img src="images/plainWaterIcon.png" alt="rain chance"/>
           </div>
-          <div class="centrePrecipPercent" id="centrePrecipPercent">100%</div>
+          <div class="centrePrecipPercent" id="centrePrecipPercent">Loading</div>
         </div>
 
         <div class="centreWind">
           <div class="centreWindDir">
             <img src="images/plainWindIcon.png" alt="wind direction"/>
           </div>
-          <div class="centreWindCardinal" id="centreWindCardinal">N E</div>
+          <div class="centreWindCardinal" id="centreWindCardinal">Loading</div>
         </div>
       </div>
 
@@ -60,11 +63,11 @@
           <div class="hourBits">
             
             <div class="hBit"><img src="images/conditions/day/122.png" alt="condition" class="hourlyConditionImg"/></div>
-            <div class="hBit hourlyConditionText">Torrential Rain</div>
+            <div class="hBit hourlyConditionText">Loading</div>
             <div class="hBit"><img src="images/plainWaterIcon.png" alt="rain chance"/></div>
-            <div class="hBit hourlyRainChance">ABC</div>
+            <div class="hBit hourlyRainChance">Loading</div>
             <div class="hBit"><img src="images/plainWindIcon.png" alt="wind direction"/></div>
-            <div class="hBit hourlyWindDirection">ABC</div>
+            <div class="hBit hourlyWindDirection">Loading</div>
             
             </div
         ></span>
@@ -73,11 +76,11 @@
           <div class="hourBits">
             
             <div class="hBit"><img src="images/conditions/day/122.png" alt="condition" class="hourlyConditionImg"/></div>
-            <div class="hBit hourlyConditionText">Torrential Rain</div>
+            <div class="hBit hourlyConditionText">Loading</div>
             <div class="hBit"><img src="images/plainWaterIcon.png" alt="rain chance"/></div>
-            <div class="hBit hourlyRainChance">ABC</div>
+            <div class="hBit hourlyRainChance">Loading</div>
             <div class="hBit"><img src="images/plainWindIcon.png" alt="wind direction"/></div>
-            <div class="hBit hourlyWindDirection">ABC</div>
+            <div class="hBit hourlyWindDirection">Loading</div>
             
             </div
         ></span>
@@ -86,11 +89,11 @@
           <div class="hourBits">
             
             <div class="hBit"><img src="images/conditions/day/122.png" alt="condition" class="hourlyConditionImg"/></div>
-            <div class="hBit hourlyConditionText">Torrential Rain</div>
+            <div class="hBit hourlyConditionText">Loading</div>
             <div class="hBit"><img src="images/plainWaterIcon.png" alt="rain chance"/></div>
-            <div class="hBit hourlyRainChance">ABC</div>
+            <div class="hBit hourlyRainChance">Loading</div>
             <div class="hBit"><img src="images/plainWindIcon.png" alt="wind direction"/></div>
-            <div class="hBit hourlyWindDirection">abc</div>
+            <div class="hBit hourlyWindDirection">Loading</div>
             
             </div
         ></span>
@@ -99,11 +102,11 @@
           <div class="hourBits">
             
             <div class="hBit"><img src="images/conditions/day/122.png" alt="condition" class="hourlyConditionImg"/></div>
-            <div class="hBit hourlyConditionText">Torrential Rain</div>
+            <div class="hBit hourlyConditionText">Loading</div>
             <div class="hBit"><img src="images/plainWaterIcon.png" alt="rain chance"/></div>
-            <div class="hBit hourlyRainChance">ABC</div>
+            <div class="hBit hourlyRainChance">Loading</div>
             <div class="hBit"><img src="images/plainWindIcon.png" alt="wind direction"/></div>
-            <div class="hBit hourlyWindDirection">ABC</div>
+            <div class="hBit hourlyWindDirection">Loading</div>
             
             </div
         ></span>
