@@ -32,8 +32,8 @@ a {
   color: initial;
 }
 :root {
-  --mainBG: rgb(176, 146, 109);
-  --mainHighlight: rgb(141, 116, 86);
+  --mainBG: rgb(91, 146, 167);
+  --mainHighlight: rgb(78, 131, 151);
   --placeholder: rgb(50, 50, 50);
 }
 /* ---------------------------------------------------- */
