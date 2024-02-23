@@ -33,6 +33,7 @@ a {
 }
 :root {
   --mainBG: rgb(176, 146, 109);
+  --mainHighlight: rgb(141, 116, 86);
   --placeholder: rgb(50, 50, 50);
 }
 /* ---------------------------------------------------- */
@@ -102,9 +103,18 @@ body {
   justify-content: space-evenly;
   border-bottom: 2px solid black;
   height: min-content;
+  text-align: center;
 }
 .topTabs * {
   cursor: pointer;
+  width: 50%;
+
+  outline: 1px solid transparent;
+
+  border-radius: 5px;
+}
+.topTabs *:hover{
+  background-color: var(--mainHighlight)
 }
 /* ----------------- */
 .centreDetails {
@@ -191,6 +201,10 @@ body {
   max-width: 4rem; */
   width: 4rem;
   height: auto;
+}
+/* ----------------- */
+.activeTab {
+  background-color: var(--mainHighlight)
 }
 /* ----------------- */
 @media only screen and (max-width: 600px) {
