@@ -63,7 +63,10 @@ const injector = () => {
       );
 
       updateElementContent(conditionImgElement, hourlyData.condition.icon);
-      updateElementContent(conditionTextElement, hourlyData.condition.text);
+
+      // updateElementContent(conditionTextElement, hourlyData.condition.text);
+      updateElementContent(conditionTextElement, hourlyData.temp_c);
+      
       updateElementContent(rainChanceElement, hourlyData.rainchance);
       updateElementContent(windDirectionElement, hourlyData.wind_dir);
     }
