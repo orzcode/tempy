@@ -1,21 +1,13 @@
 # Tempy - a Weather App by OrzCode
 
-Write the functions that hit the API. You’re going to want functions that can take a location and return the weather data for that location. For now, just console.log() the information.
+With this app, I furthered my knowledge of API usage and importance of promises/async functions.
 
-Write the functions that process the JSON data you’re getting from the API and return an object with only the data you require for your app.
+I've taken the API data from a weather service, re-constructed and pruned it with various types of formatting as a bespoke object suited for this app, and displayed desired data accordingly.
 
-Set up a form that will let users input their location and will fetch the weather info (still just console.log() it).
+One aim was to have all the data on one page at a glance, and for ease' sake only have forecasts for today and tomorrow (max was 3 days anyway, from the free tier API). Hourly data was easier to display at set intervals (12pm, 3pm, 6pm, 9pm).
 
-Display the information on your webpage!
+It is of course curated for mobile displays too (or at least, my mobile).
 
-Add any styling you like!
+As is my current trend, I tried hard to compartmentalize and abstractify the code. For the most part, this worked well.
 
-Optional: add a ‘loading’ component that displays from the time the form is submitted until the information comes back from the API. Use DevTools to test for low-end devices.
-
-~~~
-
-https://www.weatherapi.com/docs/
-
-~~~
-
-Do I need to make object order important?
+Future additions would include: a loading spinner; dynamic backgrounds based on weather; etc.
