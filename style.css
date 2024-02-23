@@ -48,7 +48,7 @@ a {
 body {
   display: flex;
   justify-content: center;
-  min-height: 100vh;
+  height: 100vh;
   width: 100vw;
   max-width: 100vw;
 
@@ -56,13 +56,9 @@ body {
 }
 
 .mainContainer {
-  width: 500px;
-  height: 650px;
+
   background-color: var(--mainBG);
   /*Can add padding here once hour column width is set*/
-
-  /* display: grid; */
-
   /* should change to grid */
 
   display: flex;
@@ -91,13 +87,13 @@ body {
   /*Above is the input styling, removed*/
 
   caret-color: var(--placeholder);
-  background-color: var(--mainBG);
+  background-color: transparent;
   text-align: center;
   width: 140px;
 }
 #location:hover {
-  outline: 1px solid var(--placeholder);
-  border-radius: 1rem;
+  /* outline: 1px solid var(--placeholder);
+  border-radius: 1rem; */
 }
 /* ----------------- */
 .topTabs {
@@ -193,5 +189,13 @@ body {
   max-width: 4rem; */
   width: 4rem;
   height: auto;
+}
+/* ----------------- */
+@media only screen and (max-width: 600px) {
+  .mainContainer {
+    background-color: lightblue;
+    height: 100vh;
+    width: 100vw;
+  }
 }
 /* ----------------- */
