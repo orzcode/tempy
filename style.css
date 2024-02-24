@@ -78,6 +78,9 @@ body {
 }
 /* ----------------- */
 #date {
+  white-space: nowrap;
+  /*force text to one line*/
+  
   /*This section spacing/styling is a bit slapjack*/
 }
 #location {
@@ -91,7 +94,7 @@ body {
   caret-color: var(--placeholder);
   background-color: transparent;
   text-align: center;
-  width: 140px;
+  width: 100%;
 }
 #location:hover {
   /* outline: 1px solid var(--placeholder);
