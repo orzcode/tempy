@@ -14,13 +14,13 @@
     />
     <title>Tempy</title>
     <link rel="icon" type="image/x-icon" href="/tempy/assets/favicon-2Mfln62u.ico" />
-    <script type="module" crossorigin src="/tempy/assets/index-p8spzNEj.js"></script>
-    <link rel="stylesheet" crossorigin href="/tempy/assets/index-_S8aU6rx.css">
+    <script type="module" crossorigin src="/tempy/assets/index-Pgjlmf5l.js"></script>
+    <link rel="stylesheet" crossorigin href="/tempy/assets/index-H-lJ06Yd.css">
   </head>
   <body>
     <div class="mainContainer">
 
-      <dialog class="splashScreen" open>Enter city location: </dialog>
+      <dialog class="splashScreen">Enter city location: </dialog>
 
       <div class="topTabs">
         <h2 id="today">Today</h2>
@@ -28,8 +28,11 @@
       </div>
       <div class="dateLocation"><p id="date">Loading</p>
         <!-- use value="x" for the default value of the input -->
-        <input type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z]" placeholder="Enter city name" autocomplete="off"></div>
-
+        <form>
+          <input type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z]" placeholder="Enter city name" autocomplete="off">
+          <img src="images/editSVG.svg" alt="Edit location" class="editSVG">
+        </form>
+      </div>
       <div class="centreDetails">
         <div class="centreTempAndHigh">
           <div class="centreTemp" id="centreTemp">???</div>
