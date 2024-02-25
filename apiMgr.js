@@ -58,8 +58,9 @@ const apiMgr = () => {
       //accounts for missing 0 if hour is single digit. sigh.
     const tomorrow = addDays(today, 1);
    
-    const todayFormatted = format(parseISO(today), "EEEE do MMMM");
-    const tomorrowFormatted = format(tomorrow, "EEEE do MMMM");
+    const todayFormatted = format(parseISO(today), "E, do MMMM");
+    const tomorrowFormatted = format(tomorrow, "E, do MMMM");
+    //EEEE for full day name
 
     processedObj.today.date = todayFormatted;
     processedObj.tomorrow.date = tomorrowFormatted;
