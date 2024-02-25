@@ -10,9 +10,22 @@ It is of course curated for mobile displays too (or at least, my mobile).
 
 As is my current trend, I tried hard to compartmentalize and abstractify the code. For the most part, this worked well.
 
+PRO-TIP for mobile address bar:
+````````````````````````````
+If you do:
+
+html, body {
+    height: 100%;
+}
+
+.container {
+    height: 100%;
+}
+
+which will be the height of the viewport minus the url bar!
+````````````````````````````
 # Future additions would include: 
 initial startup location selection
 a loading spinner
 dynamic backgrounds based on weather w/frosted glass effect
-highlight the location input field 
 average-out the hourly rain chance for 1hr either side

@@ -16,10 +16,12 @@ html {
   caret-color: transparent;
   overflow-x: hidden;
   user-select: none;
+  height: 100%
 }
 body {
   font-size: 2rem;
   width: 100vw;
+  height: 100%
   /* font-size: calc(1.5rem + 0.4vw); */
   /* FONTSIZE TRICK-- 1 rem = 10 px here, usually 1 rem = 16px */
   /* FONTSIZE - Adding the 0.4 is for responsivity */
@@ -50,7 +52,7 @@ a {
 body {
   display: flex;
   justify-content: center;
-  height: 100vh;
+
   width: 100vw;
   max-width: 100vw;
 
@@ -65,7 +67,7 @@ body {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-
+  height: 100%;
   position: relative;
 }
 
@@ -230,12 +232,10 @@ form {
   /* 'relative' to .mainContainer */
 }
 /* ----------------- */
-@media only screen and (max-width: 600px) {
+/* Reverse MQ - for larger screens */
+@media only screen and (min-width: 600px) {
   .mainContainer {
-    height: 100vh;
-    width: 100vw;
-    max-width: 100vw;
-    max-height: 100vh;
+    max-height: 60vh;   
   }
 }
 /* ----------------- */
