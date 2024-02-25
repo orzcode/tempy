@@ -116,13 +116,14 @@ form {
 .topTabs * {
   cursor: pointer;
   width: 50%;
-
   outline: 1px solid transparent;
-
   border-radius: 5px;
 }
 .topTabs *:hover {
-  background-color: var(--mainHighlight);
+  backdrop-filter:brightness(0.9);
+}
+.topTabActive {
+  backdrop-filter:brightness(0.9);
 }
 /* ----------------- */
 .centreDetails {
