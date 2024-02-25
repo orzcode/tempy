@@ -16,10 +16,10 @@ const injector = () => {
 
   const updateElementContent = (element, content) => {
     if (element.src !== undefined) {
-      element.src = content
+      element.src = content;
       //checks to see if element is an image - if so, replaces the src
       //rather than the textconent
-    }else element.textContent = content;
+    } else element.textContent = content;
   };
 
   const injMain = (ToT) => {
@@ -66,21 +66,31 @@ const injector = () => {
 
       // updateElementContent(conditionTextElement, hourlyData.condition.text);
       updateElementContent(conditionTextElement, hourlyData.temp_c);
-      
+
       updateElementContent(rainChanceElement, hourlyData.rainchance);
       updateElementContent(windDirectionElement, hourlyData.wind_dir);
     }
   };
-////////////////////////////////////////////
-//Main execution function.
-//Gets data, then injects.
-////////////////////////////////////////////
-const exec = async (ToT) => {
-  await apiMgr().getData();
-  injMain(ToT);
-  injHours(ToT);
-};
-////////////////////////////////////////////
+  ////////////////////////////////////////////
+  //Main execution function.
+  //Gets data, then injects.
+  ////////////////////////////////////////////
+  const exec = async (ToT) => {
+    ///////
+    //tab color
+    ///////
+    const topTabs = document.querySelectorAll(".topTabsH2");
+    topTabs.forEach((H2) => {
+      H2.classList.remove("topTabsActive");
+    });
+    document.querySelector(`#${ToT}`).classList.add("topTabsActive");
+    ///////
+    
+    await apiMgr().getData();
+    injMain(ToT);
+    injHours(ToT);
+  };
+  ////////////////////////////////////////////
   return { exec, updateElementContent, tags };
 };
 

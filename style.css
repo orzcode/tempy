@@ -120,9 +120,9 @@ form {
   border-radius: 5px;
 }
 .topTabs *:hover {
-  backdrop-filter:brightness(0.9);
+  backdrop-filter:brightness(0.95);
 }
-.topTabActive {
+.topTabsActive {
   backdrop-filter:brightness(0.9);
 }
 /* ----------------- */
