@@ -7,7 +7,7 @@
   /* outline: 1px solid black; */
 }
 html {
-  background-color: rgb(200, 200, 200);
+  background-color: rgb(100, 100, 100);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
     Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 62.5%;
@@ -221,10 +221,15 @@ form {
   opacity: 50%;
 }
 /* ----------------- */
-.splashScreen {
+dialog[open] {
   background-color: var(--splashBG);
 
   border: none;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   width: 100%;
   height: 100%;
@@ -232,9 +237,13 @@ form {
   position: absolute;
   /* 'relative' to .mainContainer */
 }
+dialog input {
+  text-align: center;
+  outline: 1px solid black;
+}
 /* ----------------- */
 /* Reverse MQ - for larger screens */
-@media only screen and (min-width: 600px) {
+@media only screen and (min-width: 500px) {
   .mainContainer {
     max-height: 60vh;   
   }

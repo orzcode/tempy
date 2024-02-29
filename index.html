@@ -19,7 +19,10 @@
   <body>
     <div class="mainContainer">
 
-      <dialog class="splashScreen">Enter city location: </dialog>
+      <dialog class="splashScreen">
+        <!-- <p>Enter city location:</p> -->
+        <input type="text" id="splashLocation" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z]" placeholder="Enter city name..." autocomplete="off">
+      </dialog>
 
       <div class="topTabs">
         <h2 id="today" class="topTabsH2">Today</h2>
