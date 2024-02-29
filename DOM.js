@@ -4,7 +4,9 @@ import storage from "./storage.js";
 
 const DOM = () => {
 	const locField = document.getElementById("location"); // Main Location field
-	const splashLocField = document.getElementById("splashLocation"); // Splashscreen Location field
+	const splashLocField = document.getElementById("splashLocation"); // Splash location field
+
+	const splashScreen = document.querySelector("dialog");
 
 	const applyListeners = () => {
 		document.querySelector("#today").addEventListener("click", () => injector().exec("today"));
@@ -21,8 +23,17 @@ const DOM = () => {
 			storage.props().location(inputField.value);
 			injector().exec("today");
 
-			document.querySelector("dialog").close()
+			splashFade()
 		}
+	}
+
+	const splashFade = () => {
+		splashScreen.style.opacity = 0;
+
+		// After the transition duration, close the dialog
+		setTimeout(() => {
+			splashScreen.close();
+		},1000); // 
 	}
 
 	return { applyListeners };
