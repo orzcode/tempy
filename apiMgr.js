@@ -10,14 +10,18 @@ const apiMgr = () => {
       const apiURL = queryType;
 
       const response = await fetch(apiURL, { mode: "cors" });
-      const data = await response.json();
 
-      console.log("Raw API Data:", data);
-      //to check the raw API data
+      if (response.ok) {
+        const data = await response.json();
 
-      return data;
+        console.log("Raw API Data:", data);
+        //to check the raw API data
+
+        return data;
+      } else throw new Error(response);
     } catch (error) {
-      throw error;
+      console.error("Incorrect city name entered")
+      document.querySelector("input#location").style.outline = "1px solid red"
     }
   };
 
@@ -54,10 +58,13 @@ const apiMgr = () => {
 
   const dateFormatter = (processedObj) => {
     //formats dates in the object
-    const today = format(processedObj.location.localtime, "yyyy-MM-dd'T'HH:mm:ss");
-      //accounts for missing 0 if hour is single digit. sigh.
+    const today = format(
+      processedObj.location.localtime,
+      "yyyy-MM-dd'T'HH:mm:ss"
+    );
+    //accounts for missing 0 if hour is single digit. sigh.
     const tomorrow = addDays(today, 1);
-   
+
     const todayFormatted = format(parseISO(today), "E, do MMMM");
     const tomorrowFormatted = format(tomorrow, "E, do MMMM");
     //EEEE for full day name
@@ -196,7 +203,7 @@ const dataProcessor = (returnedJson) => {
     // date gets added in after this
     temp_c:
       Math.trunc(returnedJson.forecast.forecastday[1].day.maxtemp_c) + "°",
-      
+
     maxtemp: apiMgr().maxTempFormatter(returnedJson, 1),
     //
 
