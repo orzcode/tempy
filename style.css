@@ -228,7 +228,7 @@ dialog[open] {
 
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
 
   width: 100%;
@@ -239,7 +239,8 @@ dialog[open] {
 }
 dialog input {
   text-align: center;
-  outline: 1px solid black;
+  border-radius: 5px;
+  outline: 1px solid rgba(0, 0, 0, 0.1);
 }
 /* ----------------- */
 /* Reverse MQ - for larger screens */

@@ -4,7 +4,7 @@ import injector from "./injector.js";
 import DOM from "./DOM.js";
 
 
-//storage.clear()
+storage.clear()
 
 //storage.props().location("christchurch")
 //REMOVE THIS ONCE FINISHED
