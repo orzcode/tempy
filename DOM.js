@@ -30,6 +30,8 @@ const DOM = () => {
 	const splashFade = () => {
 		splashScreen.style.opacity = 0;
 
+		splashLocField.blur()
+
 		// After the transition duration, close the dialog
 		setTimeout(() => {
 			splashScreen.close();
