@@ -97,6 +97,15 @@ input {
   max-width: 18ch;
   /* CAREFUL THIS DOESN'T OVERFLOW ON MOBILE! */
 }
+
+input:invalid {
+  background-color: brown;
+  border: 5px solid black;
+}
+input:valid {
+  background-color: lightgreen;
+  border: 5px solid black;
+}
 /* ----------------- */
 form {
   display: flex;
