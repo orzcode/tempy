@@ -71,6 +71,7 @@ const DOM = () => {
         storage.props().location(inputField.value); /////////<-culprit
 
         if ((await apiMgr().apiFetcher()) !== false) {
+          //i.e. - if API succeeds and is VALID city name
           injector().exec("today");
           splashFade();
         } else {
