@@ -34,13 +34,25 @@ const storage = {
     // storage.props().location("place") to set
     // storage.props().location() to get
 
+    const testLocation = (newLocation) => {
+      if (newLocation) {
+        storage.setLocal("testLocation", newLocation);
+        console.log(`Test location is ${newLocation}`)
+      } else return storage.getLocal("testLocation"); 
+    };
+
     const _forecastURL = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${location()}&days=2`;
 
-    const forecastURL = () => {
+    const _testURL = `https://api.weatherapi.com/v1/forecast.json?key=${key}&q=${testLocation()}&days=2`;
+
+    const forecastURL = (testLocation) => {
+      if(testLocation){
+        return _testURL
+      }else
       return _forecastURL;
     }
 
-    return { location, forecastURL };
+    return { location, testLocation, forecastURL };
 
   }
 

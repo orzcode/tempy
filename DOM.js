@@ -57,7 +57,7 @@ const DOM = () => {
       //    as well as to preventing alert msg popping up
       ///////////////////////
 
-      //IF THE PATTERN IS INVALID (EG: has numbers, symbols):
+      //IF THE PATTERN IS INVALID (EG: has numbers, symbols, or too short):
       if (!inputField.checkValidity()) {
         console.log("Invalid input pattern - numbers, or whatever");
         inputField.classList.add("inputValidity");
@@ -68,14 +68,19 @@ const DOM = () => {
       else {
         //button.click(); //--submits form via hidden button - currently unused
         event.preventDefault();
-        storage.props().location(inputField.value); /////////<-culprit
 
-        if ((await apiMgr().apiFetcher()) !== false) {
+        storage.props().testLocation(inputField.value);
+        //sets test location
+
+        if ((await apiMgr().apiFetcher("testLocation")) !== false) {
           //i.e. - if API succeeds and is VALID city name
+          storage.props().location(inputField.value);
+          //updates proper saved location
+
           injector().exec("today");
           splashFade();
         } else {
-          console.log("Invalid city name entered - spell it right!");
+          //console.log("Invalid city name entered - spell it right!");
           inputField.classList.add("inputValidity");
         }
       }
@@ -83,10 +88,10 @@ const DOM = () => {
   };
 
   const removeValidityClass = (inputField) => {
-    if (event.key === "Backspace" || event.key === "Delete") {
-      console.log(event.key + " key pressed on input");
-
+    if (event.key !== "Enter") {
       inputField.classList.remove("inputValidity");
+      //removes invalid class when any key other than Enter is pressed.
+      //previously, was Backspace || Delete
     }
   };
 
@@ -100,7 +105,7 @@ const DOM = () => {
 
   const splashFade = () => {
     //blurs/fades out the splashscreen
-    
+
     splashScreen.style.opacity = 0;
     splashLocField.blur();
 

@@ -3,15 +3,19 @@ import conditionsJSON from "./conditionsJSON.json";
 import { format, parseISO, parse, addDays } from "date-fns";
 
 const apiMgr = () => {
-  const apiURL = storage.props().forecastURL();
-  //settled on one type of fetch URL
+  const apiFetcher = async (testLocation) => {
+    let apiURL;
+    if (testLocation) {
+      apiURL = storage.props().forecastURL(testLocation);
+    } else {
+      apiURL = storage.props().forecastURL();
+    }
 
-  const apiFetcher = async () => {
     try {
       const response = await fetch(apiURL, { mode: "cors" });
 
       if (response.ok) {
-        console.log("API response ok")
+        console.log("API response ok");
         const data = await response.json();
 
         console.log("Raw API Data:", data);
@@ -19,35 +23,30 @@ const apiMgr = () => {
 
         formatMgr(data);
         //IF the response is OK, sends data to formatter function
-
-      } else 
-        throw new Error(response);      
+      } else throw new Error(response);
     } catch (error) {
       console.error("API response failed - Invalid city name entered");
-      return false
+      return false;
     }
   };
 
-  const formatMgr = async (rawObj) => {
+  const formatMgr = (rawObj) => {
     //does everything needed to reconstruct / format the data.
 
-      const result = rawObj;
+    //sends it through about 4 format functions
+    //this is cursed and I hate it, how can I do it better?
+    const finalData = currentRainFormatter(
+      conditionTextFormatter(dateFormatter(dataProcessor(rawObj))),
+      rawObj
+    );
 
-      const processedData = dataProcessor(result);
+    console.log("Final API Data:", finalData);
+    //checks the Processed & Fixed Data
 
-      const fixedData = dateFormatter(processedData);
+    locallyStore(finalData);
+    //stores local copy to use instead of calling API each time
 
-      const finalData = conditionTextFormatter(fixedData);
-
-      const finalData2 = currentRainFormatter(finalData, result);
-
-      console.log("Final API Data:", finalData2);
-      //checks the Processed & Fixed Data
-
-      locallyStore(finalData2);
-      //stores local copy to use instead of calling API each time
-
-      return finalData2;
+    return finalData;
   };
 
   const locallyStore = (obj) => {

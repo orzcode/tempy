@@ -21,7 +21,7 @@
 
       <dialog class="splashScreen">
         <h1>Tempy⛅</h1>
-        <form><input type="text" id="splashLocation" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name..." autocomplete="off" required>
+        <form><input onfocus="this.select()" type="text" id="splashLocation" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name..." autocomplete="off" required>
           <button type="submit" style="display: none;"></button>
         </form>
         <div><a href='https://github.com/orzcode' target='_blank'>By Orz <i class='fa-brands fa-github'></i></a></div>
@@ -34,7 +34,7 @@
       <div class="dateLocation"><p id="date">Loading</p>
         <!-- use value="x" for the default value of the input -->
         <form>
-          <input type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name" autocomplete="off" required>
+          <input onfocus="this.select()" type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name" autocomplete="off" required>
           <img src="images/editSVG.svg" alt="Edit location" class="editSVG">
           <button type="submit" style="display: none;"></button>
         </form>
