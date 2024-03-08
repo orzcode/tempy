@@ -3,34 +3,36 @@ import conditionsJSON from "./conditionsJSON.json";
 import { format, parseISO, parse, addDays } from "date-fns";
 
 const apiMgr = () => {
-  const forecastURL = storage.props().forecastURL;
+  const apiURL = storage.props().forecastURL();
+  //settled on one type of fetch URL
 
-  const apiFetcher = async (queryType) => {
+  const apiFetcher = async () => {
     try {
-      const apiURL = queryType;
-
       const response = await fetch(apiURL, { mode: "cors" });
 
       if (response.ok) {
+        console.log("API response ok")
         const data = await response.json();
 
         console.log("Raw API Data:", data);
         //to check the raw API data
 
-        return data;
-      } else throw new Error(response);
+        formatMgr(data);
+        //IF the response is OK, sends data to formatter function
+
+      } else 
+        throw new Error(response);      
     } catch (error) {
-      console.error("Incorrect city name entered")
-      document.querySelector("input#location").style.outline = "1px solid red"
+      console.error("API response failed - Invalid city name entered");
+      return false
     }
   };
 
-  const getData = async () => {
-    //called "getData" but actually does everything needed
-    //to get AND reconstruct / format the data.
+  const formatMgr = async (rawObj) => {
+    //does everything needed to reconstruct / format the data.
 
-    try {
-      const result = await apiFetcher(forecastURL());
+      const result = rawObj;
+
       const processedData = dataProcessor(result);
 
       const fixedData = dateFormatter(processedData);
@@ -46,9 +48,6 @@ const apiMgr = () => {
       //stores local copy to use instead of calling API each time
 
       return finalData2;
-    } catch (error) {
-      throw error;
-    }
   };
 
   const locallyStore = (obj) => {
@@ -124,8 +123,10 @@ const apiMgr = () => {
     return Math.trunc(highestNumber) + "°";
   };
 
-  return { getData, maxTempFormatter };
+  return { apiFetcher, maxTempFormatter, apiMgr };
 };
+
+/////////////////////////////////////////
 
 const dataProcessor = (returnedJson) => {
   // hour should be 0-24

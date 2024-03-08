@@ -3,24 +3,24 @@ import apiMgr from "./apiMgr.js";
 import injector from "./injector.js";
 import DOM from "./DOM.js";
 
+//storage.clear()
 
-storage.clear()
+const pageLoad = (() => {
+	DOM().applyListeners()
 
-//storage.props().location("christchurch")
-//REMOVE THIS ONCE FINISHED
-
-//console.log(storage.getLocal("localWeatherCopy"))
-
-injector().exec("today");
-DOM().applyListeners()
-
-
-const noLocation = (() => {
 	//runs automatically at pageload
 	//checks to see if a location is set.
-	//if not, shows splashscreen to let user enter location.
+	//if NO, shows splashscreen to let user enter location.
+	//if YES, fetches data for that city and injects
 	const locData = localStorage.getItem("location");
+
 	if(locData === null){
 		document.querySelector("dialog").show()
+	}else {
+		apiMgr().apiFetcher()
+		//at this juncture, 
+		//the location should have already been set.
+
+		injector().exec("today");
 	}
 })()

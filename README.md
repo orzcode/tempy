@@ -24,8 +24,7 @@ html, body {
 
 which will be the height of the viewport minus the url bar!
 ````````````````````````````
-# Future additions would include: 
-initial startup location selection
+# Future additions would include:
 a loading spinner
 dynamic backgrounds based on weather w/frosted glass effect
 average-out the hourly rain chance for 1hr either side

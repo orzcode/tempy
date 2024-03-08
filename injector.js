@@ -17,7 +17,7 @@ const injector = () => {
   const updateElementContent = (element, content) => {
     if (element.src !== undefined) {
       element.src = content;
-      //checks to see if element is an image - if so, replaces the src
+      //checks to see if element is an image - if so, replaces the img src
       //rather than the textconent
     } else element.textContent = content;
   };
@@ -65,6 +65,7 @@ const injector = () => {
       updateElementContent(conditionImgElement, hourlyData.condition.icon);
 
       // updateElementContent(conditionTextElement, hourlyData.condition.text);
+      // Swap this if you prefer condition text on hourly section instead of temperature
       updateElementContent(conditionTextElement, hourlyData.temp_c);
 
       updateElementContent(rainChanceElement, hourlyData.rainchance);
@@ -72,21 +73,19 @@ const injector = () => {
     }
   };
   ////////////////////////////////////////////
-  //Main execution function.
-  //Gets data, then injects.
-  ////////////////////////////////////////////
-  const exec = async (ToT) => {
-    ///////
-    //tab color
-    ///////
+  const exec = (ToT) => {
+    //Tab color darkens based on selected tab
     const topTabs = document.querySelectorAll(".topTabsH2");
     topTabs.forEach((H2) => {
       H2.classList.remove("topTabsActive");
     });
     document.querySelector(`#${ToT}`).classList.add("topTabsActive");
-    ///////
-    
-    await apiMgr().getData();
+    //
+
+    //await apiMgr().getData();
+    //decided to not bother updating when clicking tabs
+    //updates on pageload anyway.
+
     injMain(ToT);
     injHours(ToT);
   };
