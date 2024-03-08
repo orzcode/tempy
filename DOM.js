@@ -57,14 +57,14 @@ const DOM = () => {
       //    as well as to preventing alert msg popping up
       ///////////////////////
 
-      //IF THE PATTERN IS INVALID:
+      //IF THE PATTERN IS INVALID (EG: has numbers, symbols):
       if (!inputField.checkValidity()) {
         console.log("Invalid input pattern - numbers, or whatever");
         inputField.classList.add("inputValidity");
         //applies 'invalid' css class to input field
       }
 
-      //ELSE IF THE PATTERN IS VALID:
+      //ELSE IF THE PATTERN IS VALID (EG: no numbers, only letters, but still maybe not a valid city):
       else {
         //button.click(); //--submits form via hidden button - currently unused
         event.preventDefault();
@@ -74,7 +74,7 @@ const DOM = () => {
           injector().exec("today");
           splashFade();
         } else {
-          console.log("Invalid input pattern - numbers, or whatever");
+          console.log("Invalid city name entered - spell it right!");
           inputField.classList.add("inputValidity");
         }
       }
