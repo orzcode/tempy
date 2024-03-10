@@ -44,6 +44,7 @@ const DOM = () => {
 
   const inputEnter = async (inputField) => {
     const form = inputField.closest("form");
+    const legend = inputField.closest("form").querySelector("legend");
     const button = form.querySelector('button[type="submit"]');
     //a hidden submit button for the 'form'.
     //currently unused.
@@ -60,7 +61,7 @@ const DOM = () => {
       //IF THE PATTERN IS INVALID (EG: has numbers, symbols, or too short):
       if (!inputField.checkValidity()) {
         console.log("Invalid input pattern - numbers, or whatever");
-        inputField.classList.add("inputValidity");
+        legend.classList.add("inputValidity");
         //applies 'invalid' css class to input field
       }
 
@@ -81,15 +82,16 @@ const DOM = () => {
           splashFade();
         } else {
           //console.log("Invalid city name entered - spell it right!");
-          inputField.classList.add("inputValidity");
+          legend.classList.add("inputValidity");
         }
       }
     }
   };
 
   const removeValidityClass = (inputField) => {
+    const legend = inputField.closest("form").querySelector("legend");
     if (event.key !== "Enter") {
-      inputField.classList.remove("inputValidity");
+      legend.classList.remove("inputValidity");
       //removes invalid class when any key other than Enter is pressed.
       //previously, was Backspace || Delete
     }
