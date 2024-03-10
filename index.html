@@ -14,16 +14,17 @@
     />
     <title>Tempy</title>
     <link rel="icon" type="image/x-icon" href="/tempy/assets/favicon-2Mfln62u.ico" />
-    <script type="module" crossorigin src="/tempy/assets/index-ZZ-eE1DO.js"></script>
-    <link rel="stylesheet" crossorigin href="/tempy/assets/index-tkXCzN_Q.css">
+    <script type="module" crossorigin src="/tempy/assets/index--gYpb76z.js"></script>
+    <link rel="stylesheet" crossorigin href="/tempy/assets/index-9QYhy1ij.css">
   </head>
   <body>
     <div class="mainContainer">
 
       <dialog class="splashScreen">
         <h1>Tempy⛅</h1>
-        <form><input onfocus="this.select()" type="text" id="splashLocation" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name..." autocomplete="off" required>
+        <form><fieldset><legend class="splashLegend inputLegend">Enter a valid city:</legend><input onfocus="this.select()" type="text" id="splashLocation" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name..." autocomplete="off" required>
           <button type="submit" style="display: none;"></button>
+          </fieldset>
         </form>
         <div><a href='https://github.com/orzcode' target='_blank'>By Orz <i class='fa-brands fa-github'></i></a></div>
       </dialog>
@@ -32,12 +33,13 @@
         <h2 id="today" class="topTabsH2">Today</h2>
         <h2 id="tomorrow" class="topTabsH2">Tomorrow</h2>
       </div>
-      <div class="dateLocation"><p id="date">Loading</p>
+      <div class="dateLocation"><fieldset><legend>I should be hidden</legend><p id="date">Loading</p></fieldset>
         <!-- use value="x" for the default value of the input -->
-        <form>
+        <form><fieldset><legend class="inputLegend">Enter a valid city:</legend>
           <input onfocus="this.select()" type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name" autocomplete="off" required>
           <img src="images/editSVG.svg" alt="Edit location" class="editSVG">
           <button type="submit" style="display: none;"></button>
+        </fieldset>
         </form>
       </div>
       <div class="centreDetails">
