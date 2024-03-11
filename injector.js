@@ -1,6 +1,7 @@
 // injector.js
 import storage from "./storage.js";
 import apiMgr from "./apiMgr.js";
+import DOM from "./DOM.js";
 
 const injector = () => {
   const tags = {
@@ -81,6 +82,8 @@ const injector = () => {
     });
     document.querySelector(`#${ToT}`).classList.add("topTabsActive");
     //
+    const legend = document.getElementById("location").closest("form").querySelector("legend");
+    legend.classList.remove("inputValidity");
 
     //await apiMgr().getData();
     //decided to not bother updating when clicking tabs

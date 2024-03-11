@@ -117,7 +117,7 @@ const DOM = () => {
     }, 1000); //
   };
 
-  return { applyListeners };
+  return { applyListeners, removeValidityClass };
 };
 
 export default DOM;
