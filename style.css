@@ -73,6 +73,8 @@ body {
 
 .dateLocation {
   height: min-content;
+  padding: 0 1rem;
+  max-width: 100%;
   display: flex;
   justify-content: center;
   text-align: center;
@@ -197,8 +199,8 @@ form {
   height: 19rem;
   justify-content: space-between;
   font-size: 1.8rem;
-  padding: 0 0 0 2px;
-
+  padding: 0 1rem;
+  max-width: 100%;
   overflow: hidden;
   /* Overflow is for the 'Loading' text clipping beyond container */
 }
