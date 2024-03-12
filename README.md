@@ -22,7 +22,7 @@ html, body {
     height: 100%;
 }
 
-which will be the height of the viewport minus the url bar!
+this will result in the height of the viewport minus the url bar!
 ````````````````````````````
 # Future additions would include:
 a loading spinner

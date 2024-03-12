@@ -17,6 +17,12 @@ const injector = () => {
 
   const updateElementContent = (element, content) => {
     if (element.src !== undefined) {
+
+      if(tags.location.value === "Whangarei" && element === tags.centreConditionImg){
+        element.src = "images/conditions/goodlook.png"
+      }else
+      //secret rainyday coding for Whangarei
+
       element.src = content;
       //checks to see if element is an image - if so, replaces the img src
       //rather than the textconent
@@ -33,7 +39,9 @@ const injector = () => {
     //location field is an anomaly (input, not mere text) - hence the oddness
     updateElementContent(tags.centreTemp, data.temp_c);
     updateElementContent(tags.centreHigh, `High: ${data.maxtemp}`);
+
     updateElementContent(tags.centreConditionImg, data.condition.icon);
+
     updateElementContent(tags.centreConditionText, data.condition.text);
     updateElementContent(
       tags.centrePrecipPercent,
