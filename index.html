@@ -35,8 +35,10 @@
       <div class="dateLocation"><fieldset><legend>I should be hidden</legend><p id="date">Loading</p></fieldset>
         <!-- use value="x" for the default value of the input -->
         <form><fieldset><legend class="inputLegend">Enter a valid city:</legend>
-          <input onfocus="this.select()" type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name" autocomplete="off" required>
-          <img src="images/editSVG.svg" alt="Edit location" class="editSVG">
+          <div class="mainInput">
+            <input onfocus="this.select()" type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name" autocomplete="off" required>
+            <img src="images/editSVG.svg" alt="Edit location" class="editSVG">
+          </div>
           <button type="submit" style="display: none;"></button>
         </fieldset>
         </form>
