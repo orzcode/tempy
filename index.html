@@ -14,8 +14,8 @@
     />
     <title>Tempy</title>
     <link rel="icon" type="image/x-icon" href="/tempy/assets/favicon-2Mfln62u.ico" />
-    <script type="module" crossorigin src="/tempy/assets/index-2yOKp4d8.js"></script>
-    <link rel="stylesheet" crossorigin href="/tempy/assets/index-K13V3ZKX.css">
+    <script type="module" crossorigin src="/tempy/assets/index-KsJ_f4Lm.js"></script>
+    <link rel="stylesheet" crossorigin href="/tempy/assets/index-ypAey9G9.css">
   </head>
   <body>
     <div class="mainContainer">
@@ -36,8 +36,10 @@
       <div class="dateLocation"><fieldset><legend>I should be hidden</legend><p id="date">Loading</p></fieldset>
         <!-- use value="x" for the default value of the input -->
         <form><fieldset><legend class="inputLegend">Enter a valid city:</legend>
-          <input onfocus="this.select()" type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name" autocomplete="off" required>
-          <img src="images/editSVG.svg" alt="Edit location" class="editSVG">
+          <div class="mainInput">
+            <input onfocus="this.select()" type="text" id="location" maxlength="18" minlength="2" title="City name" pattern="[A-Za-z ]+" placeholder="Enter city name" autocomplete="off" required>
+            <img src="images/editSVG.svg" alt="Edit location" class="editSVG">
+          </div>
           <button type="submit" style="display: none;"></button>
         </fieldset>
         </form>
